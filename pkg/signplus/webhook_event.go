@@ -1,0 +1,11 @@
+package signplus
+
+// Event of the webhook
+type WebhookEvent string
+
+const (
+	WEBHOOK_EVENT_ENVELOPE_EXPIRED   WebhookEvent = "ENVELOPE_EXPIRED"
+	WEBHOOK_EVENT_ENVELOPE_DECLINED  WebhookEvent = "ENVELOPE_DECLINED"
+	WEBHOOK_EVENT_ENVELOPE_VOIDED    WebhookEvent = "ENVELOPE_VOIDED"
+	WEBHOOK_EVENT_ENVELOPE_COMPLETED WebhookEvent = "ENVELOPE_COMPLETED"
+)
