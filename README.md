@@ -1,11 +1,11 @@
-# Signplus Go SDK 2.0.0
+# Signplus Go SDK 1.0.0
 
 Welcome to the Signplus SDK documentation. This guide will help you get started with integrating and using the Signplus SDK in your project.
 
 ## Versions
 
 - API version: `2.0.0`
-- SDK version: `2.0.0`
+- SDK version: `1.0.0`
 
 ## About the API
 
@@ -46,7 +46,7 @@ import (
     "github.com/alohihq/signplus-go/pkg/signplusconfig"
   )
 
-config := signplusconfig.NewConfig{}
+config := signplusconfig.NewConfig()
 config.SetBearerToken("YOUR-TOKEN")
 
 sdk := signplus.NewSignplus(config)
@@ -60,7 +60,7 @@ import (
     "github.com/alohihq/signplus-go/pkg/signplusconfig"
   )
 
-config := signplusconfig.NewConfig{}
+config := signplusconfig.NewConfig()
 
 sdk := signplus.NewSignplus(config)
 sdk.SetBearerToken("YOUR-TOKEN")
