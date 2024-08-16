@@ -3,7 +3,7 @@ package signplus
 type CreateEnvelopeRequest struct {
 	// Name of the envelope
 	Name *string `json:"name,omitempty" required:"true"`
-	// Flow type of the envelope (REQUEST_SIGNATURE is a request for signature, SIGN_MYSELF is a self-signing flow)
+	// Flow type of the envelope (REQUEST_SIGNATURE is a request for signature)
 	FlowType *EnvelopeFlowType `json:"flow_type,omitempty" required:"true"`
 	// Legal level of the envelope (SES is Simple Electronic Signature, QES_EIDAS is Qualified Electronic Signature, QES_ZERTES is Qualified Electronic Signature with Zertes)
 	LegalityLevel *EnvelopeLegalityLevel `json:"legality_level,omitempty" required:"true"`
