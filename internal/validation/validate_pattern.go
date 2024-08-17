@@ -19,14 +19,21 @@ func validatePattern(field reflect.StructField, value reflect.Value) error {
 		return fmt.Errorf("regex failed to compile")
 	}
 
-	kind := utils.GetReflectKind(value.Type())
+	if value.IsNil() {
+		return nil
+	}
 
+	kind := utils.GetReflectKind(value.Type())
 	if kind != reflect.String {
 		return fmt.Errorf("field %s with value %v cannot match pattern %s because it is not a string", field.Name, value, pattern)
 	}
 
-	if !compiledRegex.MatchString(value.String()) {
-		return fmt.Errorf("field %s with value %v does not match pattern %s", field.Name, value, pattern)
+	if value.Kind() == reflect.Ptr && !compiledRegex.MatchString(value.Elem().String()) {
+		return fmt.Errorf("field %s with value %v does not match pattern %s", field.Name, value.Elem().String(), pattern)
+	}
+
+	if value.Kind() != reflect.Ptr && !compiledRegex.MatchString(value.String()) {
+		return fmt.Errorf("field %s with value %v does not match pattern %s", field.Name, value.String(), pattern)
 	}
 
 	return nil
