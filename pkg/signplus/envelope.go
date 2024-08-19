@@ -9,7 +9,7 @@ type Envelope struct {
 	Comment *string `json:"comment,omitempty"`
 	// Total number of pages in the envelope
 	Pages *int64 `json:"pages,omitempty"`
-	// Flow type of the envelope (REQUEST_SIGNATURE is a request for signature, SIGN_MYSELF is a self-signing flow)
+	// Flow type of the envelope (REQUEST_SIGNATURE is a request for signature)
 	FlowType *EnvelopeFlowType `json:"flow_type,omitempty"`
 	// Legal level of the envelope (SES is Simple Electronic Signature, QES_EIDAS is Qualified Electronic Signature, QES_ZERTES is Qualified Electronic Signature with Zertes)
 	LegalityLevel *EnvelopeLegalityLevel `json:"legality_level,omitempty"`
