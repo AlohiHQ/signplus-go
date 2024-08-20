@@ -17,13 +17,10 @@ func main() {
 	config := signplusconfig.NewConfig()
 	client := signplus.NewSignplus(config)
 
-	envelopeFlowType := signplus.ENVELOPE_FLOW_TYPE_REQUEST_SIGNATURE
-
 	envelopeLegalityLevel := signplus.ENVELOPE_LEGALITY_LEVEL_SES
 
 	request := signplus.CreateEnvelopeRequest{}
 	request.SetName("Name")
-	request.SetFlowType(envelopeFlowType)
 	request.SetLegalityLevel(envelopeLegalityLevel)
 
 	response, err := client.Signplus.CreateEnvelope(context.Background(), request)
