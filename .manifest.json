@@ -1,6 +1,6 @@
 {
-  "liblabVersion": "2.1.28",
-  "date": "2024-08-21T11:02:19.350Z",
+  "liblabVersion": "2.1.29",
+  "date": "2024-08-27T11:01:47.836Z",
   "config": {
     "language": "go",
     "apiId": 947,
@@ -30,7 +30,16 @@
         "sdkVersion": "1.0.0"
       },
       "java": {
-        "groupId": "alohi.signplus",
+        "groupId": "com.alohi",
+        "artifactId": "signplus",
+        "developers": [
+          {
+            "name": "Alohi SA",
+            "email": "support@alohi.com",
+            "organization": "Alohi SA",
+            "organizationUrl": "https://www.alohi.com"
+          }
+        ],
         "additionalConstructorParameters": [],
         "githubRepoName": "signplus-java",
         "liblabVersion": "2",
@@ -51,7 +60,7 @@
         "githubRepoName": "signplus-php",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "2.0.0"
+        "sdkVersion": "1.0.0"
       },
       "typescript": {
         "bundle": false,
@@ -97,7 +106,7 @@
       "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"]
     },
     "multiTenant": true,
-    "specUrl": "https://prod-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/947/open-api-spec.yaml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA5P3QKKDKGVNIJ2H7%2F20240821%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240821T110214Z&X-Amz-Expires=43200&X-Amz-Signature=009d5622184bfe1c39e60a5d0a55af4a2e741c467ac7da365003bdd60373a218&X-Amz-SignedHeaders=host&x-id=GetObject",
+    "specUrl": "https://prod-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/947/open-api-spec.yaml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA5P3QKKDKGVNIJ2H7%2F20240827%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240827T110142Z&X-Amz-Expires=43200&X-Amz-Signature=ae8f7da51336296dd6ad31506e9c8a3f5424d756f91a0ede5913ecd2b03a804d&X-Amz-SignedHeaders=host&x-id=GetObject",
     "includeWatermark": false,
     "goModuleName": "github.com/alohihq/signplus-go",
     "additionalConstructorParameters": [],
