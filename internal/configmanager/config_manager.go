@@ -1,6 +1,9 @@
 package configmanager
 
-import "github.com/alohihq/signplus-go/pkg/signplusconfig"
+import (
+	"github.com/alohihq/signplus-go/pkg/signplusconfig"
+	"time"
+)
 
 type ConfigManager struct {
 	Signplus signplusconfig.Config
@@ -14,6 +17,10 @@ func NewConfigManager(config signplusconfig.Config) *ConfigManager {
 
 func (c *ConfigManager) SetBaseUrl(baseUrl string) {
 	c.Signplus.SetBaseUrl(baseUrl)
+}
+
+func (c *ConfigManager) SetTimeout(timeout time.Duration) {
+	c.Signplus.SetTimeout(timeout)
 }
 
 func (c *ConfigManager) SetAccessToken(accessToken string) {

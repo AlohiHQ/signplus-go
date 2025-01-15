@@ -1,5 +1,9 @@
 package signplus
 
+import (
+	"encoding/json"
+)
+
 type Envelope struct {
 	// Unique identifier of the envelope
 	Id *string `json:"id,omitempty"`
@@ -28,10 +32,7 @@ type Envelope struct {
 	SigningSteps []SigningStep         `json:"signing_steps,omitempty"`
 	Documents    []Document            `json:"documents,omitempty"`
 	Notification *EnvelopeNotification `json:"notification,omitempty"`
-}
-
-func (e *Envelope) SetId(id string) {
-	e.Id = &id
+	touched      map[string]bool
 }
 
 func (e *Envelope) GetId() *string {
@@ -41,8 +42,20 @@ func (e *Envelope) GetId() *string {
 	return e.Id
 }
 
-func (e *Envelope) SetName(name string) {
-	e.Name = &name
+func (e *Envelope) SetId(id string) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Id"] = true
+	e.Id = &id
+}
+
+func (e *Envelope) SetIdNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Id"] = true
+	e.Id = nil
 }
 
 func (e *Envelope) GetName() *string {
@@ -52,8 +65,20 @@ func (e *Envelope) GetName() *string {
 	return e.Name
 }
 
-func (e *Envelope) SetComment(comment string) {
-	e.Comment = &comment
+func (e *Envelope) SetName(name string) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Name"] = true
+	e.Name = &name
+}
+
+func (e *Envelope) SetNameNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Name"] = true
+	e.Name = nil
 }
 
 func (e *Envelope) GetComment() *string {
@@ -63,8 +88,20 @@ func (e *Envelope) GetComment() *string {
 	return e.Comment
 }
 
-func (e *Envelope) SetPages(pages int64) {
-	e.Pages = &pages
+func (e *Envelope) SetComment(comment string) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Comment"] = true
+	e.Comment = &comment
+}
+
+func (e *Envelope) SetCommentNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Comment"] = true
+	e.Comment = nil
 }
 
 func (e *Envelope) GetPages() *int64 {
@@ -74,8 +111,20 @@ func (e *Envelope) GetPages() *int64 {
 	return e.Pages
 }
 
-func (e *Envelope) SetFlowType(flowType EnvelopeFlowType) {
-	e.FlowType = &flowType
+func (e *Envelope) SetPages(pages int64) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Pages"] = true
+	e.Pages = &pages
+}
+
+func (e *Envelope) SetPagesNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Pages"] = true
+	e.Pages = nil
 }
 
 func (e *Envelope) GetFlowType() *EnvelopeFlowType {
@@ -85,8 +134,20 @@ func (e *Envelope) GetFlowType() *EnvelopeFlowType {
 	return e.FlowType
 }
 
-func (e *Envelope) SetLegalityLevel(legalityLevel EnvelopeLegalityLevel) {
-	e.LegalityLevel = &legalityLevel
+func (e *Envelope) SetFlowType(flowType EnvelopeFlowType) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["FlowType"] = true
+	e.FlowType = &flowType
+}
+
+func (e *Envelope) SetFlowTypeNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["FlowType"] = true
+	e.FlowType = nil
 }
 
 func (e *Envelope) GetLegalityLevel() *EnvelopeLegalityLevel {
@@ -96,8 +157,20 @@ func (e *Envelope) GetLegalityLevel() *EnvelopeLegalityLevel {
 	return e.LegalityLevel
 }
 
-func (e *Envelope) SetStatus(status EnvelopeStatus) {
-	e.Status = &status
+func (e *Envelope) SetLegalityLevel(legalityLevel EnvelopeLegalityLevel) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["LegalityLevel"] = true
+	e.LegalityLevel = &legalityLevel
+}
+
+func (e *Envelope) SetLegalityLevelNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["LegalityLevel"] = true
+	e.LegalityLevel = nil
 }
 
 func (e *Envelope) GetStatus() *EnvelopeStatus {
@@ -107,8 +180,20 @@ func (e *Envelope) GetStatus() *EnvelopeStatus {
 	return e.Status
 }
 
-func (e *Envelope) SetCreatedAt(createdAt int64) {
-	e.CreatedAt = &createdAt
+func (e *Envelope) SetStatus(status EnvelopeStatus) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Status"] = true
+	e.Status = &status
+}
+
+func (e *Envelope) SetStatusNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Status"] = true
+	e.Status = nil
 }
 
 func (e *Envelope) GetCreatedAt() *int64 {
@@ -118,8 +203,20 @@ func (e *Envelope) GetCreatedAt() *int64 {
 	return e.CreatedAt
 }
 
-func (e *Envelope) SetUpdatedAt(updatedAt int64) {
-	e.UpdatedAt = &updatedAt
+func (e *Envelope) SetCreatedAt(createdAt int64) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["CreatedAt"] = true
+	e.CreatedAt = &createdAt
+}
+
+func (e *Envelope) SetCreatedAtNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["CreatedAt"] = true
+	e.CreatedAt = nil
 }
 
 func (e *Envelope) GetUpdatedAt() *int64 {
@@ -129,8 +226,20 @@ func (e *Envelope) GetUpdatedAt() *int64 {
 	return e.UpdatedAt
 }
 
-func (e *Envelope) SetExpiresAt(expiresAt int64) {
-	e.ExpiresAt = &expiresAt
+func (e *Envelope) SetUpdatedAt(updatedAt int64) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["UpdatedAt"] = true
+	e.UpdatedAt = &updatedAt
+}
+
+func (e *Envelope) SetUpdatedAtNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["UpdatedAt"] = true
+	e.UpdatedAt = nil
 }
 
 func (e *Envelope) GetExpiresAt() *int64 {
@@ -140,8 +249,20 @@ func (e *Envelope) GetExpiresAt() *int64 {
 	return e.ExpiresAt
 }
 
-func (e *Envelope) SetNumRecipients(numRecipients int64) {
-	e.NumRecipients = &numRecipients
+func (e *Envelope) SetExpiresAt(expiresAt int64) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["ExpiresAt"] = true
+	e.ExpiresAt = &expiresAt
+}
+
+func (e *Envelope) SetExpiresAtNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["ExpiresAt"] = true
+	e.ExpiresAt = nil
 }
 
 func (e *Envelope) GetNumRecipients() *int64 {
@@ -151,8 +272,20 @@ func (e *Envelope) GetNumRecipients() *int64 {
 	return e.NumRecipients
 }
 
-func (e *Envelope) SetIsDuplicable(isDuplicable bool) {
-	e.IsDuplicable = &isDuplicable
+func (e *Envelope) SetNumRecipients(numRecipients int64) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["NumRecipients"] = true
+	e.NumRecipients = &numRecipients
+}
+
+func (e *Envelope) SetNumRecipientsNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["NumRecipients"] = true
+	e.NumRecipients = nil
 }
 
 func (e *Envelope) GetIsDuplicable() *bool {
@@ -162,8 +295,20 @@ func (e *Envelope) GetIsDuplicable() *bool {
 	return e.IsDuplicable
 }
 
-func (e *Envelope) SetSigningSteps(signingSteps []SigningStep) {
-	e.SigningSteps = signingSteps
+func (e *Envelope) SetIsDuplicable(isDuplicable bool) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["IsDuplicable"] = true
+	e.IsDuplicable = &isDuplicable
+}
+
+func (e *Envelope) SetIsDuplicableNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["IsDuplicable"] = true
+	e.IsDuplicable = nil
 }
 
 func (e *Envelope) GetSigningSteps() []SigningStep {
@@ -173,8 +318,20 @@ func (e *Envelope) GetSigningSteps() []SigningStep {
 	return e.SigningSteps
 }
 
-func (e *Envelope) SetDocuments(documents []Document) {
-	e.Documents = documents
+func (e *Envelope) SetSigningSteps(signingSteps []SigningStep) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["SigningSteps"] = true
+	e.SigningSteps = signingSteps
+}
+
+func (e *Envelope) SetSigningStepsNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["SigningSteps"] = true
+	e.SigningSteps = nil
 }
 
 func (e *Envelope) GetDocuments() []Document {
@@ -184,8 +341,20 @@ func (e *Envelope) GetDocuments() []Document {
 	return e.Documents
 }
 
-func (e *Envelope) SetNotification(notification EnvelopeNotification) {
-	e.Notification = &notification
+func (e *Envelope) SetDocuments(documents []Document) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Documents"] = true
+	e.Documents = documents
+}
+
+func (e *Envelope) SetDocumentsNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Documents"] = true
+	e.Documents = nil
 }
 
 func (e *Envelope) GetNotification() *EnvelopeNotification {
@@ -193,4 +362,115 @@ func (e *Envelope) GetNotification() *EnvelopeNotification {
 		return nil
 	}
 	return e.Notification
+}
+
+func (e *Envelope) SetNotification(notification EnvelopeNotification) {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Notification"] = true
+	e.Notification = &notification
+}
+
+func (e *Envelope) SetNotificationNil() {
+	if e.touched == nil {
+		e.touched = map[string]bool{}
+	}
+	e.touched["Notification"] = true
+	e.Notification = nil
+}
+func (e Envelope) MarshalJSON() ([]byte, error) {
+	data := make(map[string]any)
+
+	if e.touched["Id"] && e.Id == nil {
+		data["id"] = nil
+	} else if e.Id != nil {
+		data["id"] = e.Id
+	}
+
+	if e.touched["Name"] && e.Name == nil {
+		data["name"] = nil
+	} else if e.Name != nil {
+		data["name"] = e.Name
+	}
+
+	if e.touched["Comment"] && e.Comment == nil {
+		data["comment"] = nil
+	} else if e.Comment != nil {
+		data["comment"] = e.Comment
+	}
+
+	if e.touched["Pages"] && e.Pages == nil {
+		data["pages"] = nil
+	} else if e.Pages != nil {
+		data["pages"] = e.Pages
+	}
+
+	if e.touched["FlowType"] && e.FlowType == nil {
+		data["flow_type"] = nil
+	} else if e.FlowType != nil {
+		data["flow_type"] = e.FlowType
+	}
+
+	if e.touched["LegalityLevel"] && e.LegalityLevel == nil {
+		data["legality_level"] = nil
+	} else if e.LegalityLevel != nil {
+		data["legality_level"] = e.LegalityLevel
+	}
+
+	if e.touched["Status"] && e.Status == nil {
+		data["status"] = nil
+	} else if e.Status != nil {
+		data["status"] = e.Status
+	}
+
+	if e.touched["CreatedAt"] && e.CreatedAt == nil {
+		data["created_at"] = nil
+	} else if e.CreatedAt != nil {
+		data["created_at"] = e.CreatedAt
+	}
+
+	if e.touched["UpdatedAt"] && e.UpdatedAt == nil {
+		data["updated_at"] = nil
+	} else if e.UpdatedAt != nil {
+		data["updated_at"] = e.UpdatedAt
+	}
+
+	if e.touched["ExpiresAt"] && e.ExpiresAt == nil {
+		data["expires_at"] = nil
+	} else if e.ExpiresAt != nil {
+		data["expires_at"] = e.ExpiresAt
+	}
+
+	if e.touched["NumRecipients"] && e.NumRecipients == nil {
+		data["num_recipients"] = nil
+	} else if e.NumRecipients != nil {
+		data["num_recipients"] = e.NumRecipients
+	}
+
+	if e.touched["IsDuplicable"] && e.IsDuplicable == nil {
+		data["is_duplicable"] = nil
+	} else if e.IsDuplicable != nil {
+		data["is_duplicable"] = e.IsDuplicable
+	}
+
+	if e.touched["SigningSteps"] && e.SigningSteps == nil {
+		data["signing_steps"] = nil
+	} else if e.SigningSteps != nil {
+		data["signing_steps"] = e.SigningSteps
+	}
+
+	if e.touched["Documents"] && e.Documents == nil {
+		data["documents"] = nil
+	} else if e.Documents != nil {
+		data["documents"] = e.Documents
+	}
+
+	if e.touched["Notification"] && e.Notification == nil {
+		data["notification"] = nil
+	} else if e.Notification != nil {
+		data["notification"] = e.Notification
+	}
+
+	return json.Marshal(data)
 }
