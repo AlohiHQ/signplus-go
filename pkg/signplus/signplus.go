@@ -4,6 +4,7 @@ import (
 	"github.com/alohihq/signplus-go/internal/configmanager"
 	"github.com/alohihq/signplus-go/pkg/signplus"
 	"github.com/alohihq/signplus-go/pkg/signplusconfig"
+	"time"
 )
 
 type Signplus struct {
@@ -12,15 +13,23 @@ type Signplus struct {
 }
 
 func NewSignplus(config signplusconfig.Config) *Signplus {
+	signplus := signplus.NewSignplusService()
+
 	manager := configmanager.NewConfigManager(config)
+	signplus.WithConfigManager(manager)
+
 	return &Signplus{
-		Signplus: signplus.NewSignplusService(manager),
+		Signplus: signplus,
 		manager:  manager,
 	}
 }
 
 func (s *Signplus) SetBaseUrl(baseUrl string) {
 	s.manager.SetBaseUrl(baseUrl)
+}
+
+func (s *Signplus) SetTimeout(timeout time.Duration) {
+	s.manager.SetTimeout(timeout)
 }
 
 func (s *Signplus) SetAccessToken(accessToken string) {

@@ -1,25 +1,25 @@
 {
-  "liblabVersion": "2.1.28",
-  "date": "2024-08-21T11:02:19.350Z",
+  "liblabVersion": "2.10.9",
+  "date": "2025-01-15T12:53:17.500Z",
   "config": {
     "language": "go",
     "apiId": 947,
     "sdkName": "signplus",
-    "sdkVersion": "1.0.0",
+    "sdkVersion": "2.0.0",
+    "languages": ["go"],
+    "auth": ["bearer"],
     "liblabVersion": "2",
     "deliveryMethods": ["zip"],
-    "languages": ["go"],
     "apiVersion": "2.0.0",
     "apiName": "signplus-api",
     "specFilePath": "openapi.yaml",
-    "auth": ["bearer"],
     "languageOptions": {
       "csharp": {
         "packageId": "Alohi.Signplus",
         "githubRepoName": "signplus-sharp",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.0.0"
+        "sdkVersion": "2.0.0"
       },
       "go": {
         "goModuleName": "github.com/alohihq/signplus-go",
@@ -27,14 +27,23 @@
         "githubRepoName": "signplus-go",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.0.0"
+        "sdkVersion": "2.0.0"
       },
       "java": {
-        "groupId": "alohi.signplus",
+        "groupId": "com.alohi",
+        "artifactId": "signplus",
+        "developers": [
+          {
+            "name": "Alohi SA",
+            "email": "support@alohi.com",
+            "organization": "Alohi SA",
+            "organizationUrl": "https://www.alohi.com"
+          }
+        ],
         "additionalConstructorParameters": [],
         "githubRepoName": "signplus-java",
         "liblabVersion": "2",
-        "sdkVersion": "1.0.0"
+        "sdkVersion": "2.0.0"
       },
       "python": {
         "alwaysInitializeOptionals": false,
@@ -43,7 +52,7 @@
         "githubRepoName": "signplus-python",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.0.0"
+        "sdkVersion": "2.0.0"
       },
       "php": {
         "packageName": "alohi/signplus",
@@ -63,7 +72,8 @@
         "githubRepoName": "signplus-typescript",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.0.0"
+        "sdkVersion": "2.0.0",
+        "generateEnumAs": "enum"
       }
     },
     "publishing": {
@@ -97,7 +107,6 @@
       "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"]
     },
     "multiTenant": true,
-    "specUrl": "https://prod-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/947/open-api-spec.yaml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA5P3QKKDKGVNIJ2H7%2F20240821%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240821T110214Z&X-Amz-Expires=43200&X-Amz-Signature=009d5622184bfe1c39e60a5d0a55af4a2e741c467ac7da365003bdd60373a218&X-Amz-SignedHeaders=host&x-id=GetObject",
     "includeWatermark": false,
     "goModuleName": "github.com/alohihq/signplus-go",
     "additionalConstructorParameters": [],
@@ -114,7 +123,7 @@
     "httpLibrary": {
       "name": "axios",
       "packages": {
-        "axios": "^1.7.4"
+        "axios": "^1.7.7"
       },
       "languages": ["typescript"]
     },
@@ -122,7 +131,8 @@
       "paths": [],
       "rawQueries": [],
       "queriesData": []
-    }
+    },
+    "ai": false
   },
   "files": [
     "internal/validation/validate_array_length.go",
@@ -134,6 +144,7 @@
     "internal/validation/validate_pattern.go",
     "pkg/signplus/signplus.go",
     "go.mod",
+    "pkg/signplus/signplus_service.go",
     "internal/clients/rest/client.go",
     "internal/utils/utils.go",
     "internal/clients/rest/httptransport/request.go",
@@ -146,7 +157,6 @@
     "internal/clients/rest/handlers/bearer_token_handler.go",
     "internal/clients/rest/hooks/hook.go",
     "internal/clients/rest/hooks/default_hook.go",
-    "internal/clients/rest/handlers/default_headers_handler.go",
     "internal/clients/rest/handlers/retry_handler.go",
     "internal/clients/rest/handlers/request_validation_handler.go",
     "internal/validation/validation.go",
@@ -224,19 +234,20 @@
     "documentation/models/template_recipient_role.md",
     "documentation/models/template_order_field.md",
     "documentation/models/webhook_event.md",
-    "pkg/signplus/envelope_legality_level.go",
-    "pkg/signplus/envelope_flow_type.go",
-    "pkg/signplus/envelope_status.go",
-    "pkg/signplus/recipient_role.go",
-    "pkg/signplus/recipient_verification_type.go",
-    "pkg/signplus/envelope_order_field.go",
-    "pkg/signplus/annotation_type.go",
-    "pkg/signplus/annotation_font_family.go",
-    "pkg/signplus/annotation_date_time_format.go",
-    "pkg/signplus/annotation_checkbox_style.go",
-    "pkg/signplus/template_recipient_role.go",
-    "pkg/signplus/template_order_field.go",
-    "pkg/signplus/webhook_event.go",
+    ".devcontainer/devcontainer.json",
+    "internal/clients/rest/httptransport/content-type.go",
+    "internal/clients/rest/httptransport/request-builder.go",
+    "internal/contenttypes/from_form_data.go",
+    "internal/contenttypes/from_form_url_encoded.go",
+    "internal/contenttypes/from_json.go",
+    "internal/contenttypes/from_binary.go",
+    "internal/contenttypes/from_text.go",
+    "internal/contenttypes/to_form_data.go",
+    "internal/contenttypes/to_form_url_encoded.go",
+    "internal/contenttypes/to_json.go",
+    "internal/contenttypes/to_text.go",
+    "internal/contenttypes/to_binary.go",
+    "internal/serialization/serialize_object.go",
     "pkg/signplus/create_envelope_request.go",
     "pkg/signplus/envelope.go",
     "pkg/signplus/create_envelope_from_template_request.go",
@@ -270,21 +281,33 @@
     "pkg/signplus/webhook.go",
     "pkg/signplus/list_webhooks_request.go",
     "pkg/signplus/list_webhooks_response.go",
+    "pkg/signplus/envelope_legality_level.go",
+    "pkg/signplus/envelope_flow_type.go",
+    "pkg/signplus/envelope_status.go",
     "pkg/signplus/signing_step.go",
     "pkg/signplus/recipient.go",
+    "pkg/signplus/recipient_role.go",
     "pkg/signplus/recipient_verification.go",
+    "pkg/signplus/recipient_verification_type.go",
     "pkg/signplus/page.go",
+    "pkg/signplus/envelope_order_field.go",
     "pkg/signplus/dynamic_field.go",
+    "pkg/signplus/annotation_type.go",
     "pkg/signplus/annotation_signature.go",
     "pkg/signplus/annotation_initials.go",
     "pkg/signplus/annotation_text.go",
     "pkg/signplus/annotation_date_time.go",
     "pkg/signplus/annotation_checkbox.go",
     "pkg/signplus/annotation_font.go",
+    "pkg/signplus/annotation_font_family.go",
+    "pkg/signplus/annotation_date_time_format.go",
+    "pkg/signplus/annotation_checkbox_style.go",
     "pkg/signplus/template_signing_step.go",
     "pkg/signplus/template_recipient.go",
+    "pkg/signplus/template_recipient_role.go",
+    "pkg/signplus/template_order_field.go",
+    "pkg/signplus/webhook_event.go",
     "README.md",
-    "pkg/signplus/signplus_service.go",
     "documentation/services/signplus_service.md"
   ]
 }

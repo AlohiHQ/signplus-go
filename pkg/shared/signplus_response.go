@@ -23,3 +23,7 @@ func NewSignplusResponse[T any](resp *httptransport.Response[T]) *SignplusRespon
 		},
 	}
 }
+
+func (r *SignplusResponse[T]) GetData() T {
+	return r.Data
+}

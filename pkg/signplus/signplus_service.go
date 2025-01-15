@@ -7,16 +7,22 @@ import (
 	"github.com/alohihq/signplus-go/internal/configmanager"
 	"github.com/alohihq/signplus-go/pkg/shared"
 	"github.com/alohihq/signplus-go/pkg/signplusconfig"
+	"time"
 )
 
 type SignplusService struct {
 	manager *configmanager.ConfigManager
 }
 
-func NewSignplusService(manager *configmanager.ConfigManager) *SignplusService {
+func NewSignplusService() *SignplusService {
 	return &SignplusService{
-		manager: manager,
+		manager: configmanager.NewConfigManager(signplusconfig.Config{}),
 	}
+}
+
+func (api *SignplusService) WithConfigManager(manager *configmanager.ConfigManager) *SignplusService {
+	api.manager = manager
+	return api
 }
 
 func (api *SignplusService) getConfig() *signplusconfig.Config {
@@ -28,6 +34,11 @@ func (api *SignplusService) SetBaseUrl(baseUrl string) {
 	config.SetBaseUrl(baseUrl)
 }
 
+func (api *SignplusService) SetTimeout(timeout time.Duration) {
+	config := api.getConfig()
+	config.SetTimeout(timeout)
+}
+
 func (api *SignplusService) SetAccessToken(accessToken string) {
 	config := api.getConfig()
 	config.SetAccessToken(accessToken)
@@ -37,13 +48,18 @@ func (api *SignplusService) SetAccessToken(accessToken string) {
 func (api *SignplusService) CreateEnvelope(ctx context.Context, createEnvelopeRequest CreateEnvelopeRequest) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/envelope").
+		WithConfig(config).
+		WithBody(createEnvelopeRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/envelope", config)
-
-	request.Body = createEnvelopeRequest
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -55,15 +71,19 @@ func (api *SignplusService) CreateEnvelope(ctx context.Context, createEnvelopeRe
 func (api *SignplusService) CreateEnvelopeFromTemplate(ctx context.Context, templateId string, createEnvelopeFromTemplateRequest CreateEnvelopeFromTemplateRequest) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/envelope/from_template/{template_id}").
+		WithConfig(config).
+		WithBody(createEnvelopeFromTemplateRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/envelope/from_template/{template_id}", config)
-
-	request.Body = createEnvelopeFromTemplateRequest
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -75,13 +95,18 @@ func (api *SignplusService) CreateEnvelopeFromTemplate(ctx context.Context, temp
 func (api *SignplusService) ListEnvelopes(ctx context.Context, listEnvelopesRequest ListEnvelopesRequest) (*shared.SignplusResponse[ListEnvelopesResponse], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/envelopes").
+		WithConfig(config).
+		WithBody(listEnvelopesRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[ListEnvelopesResponse](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/envelopes", config)
-
-	request.Body = listEnvelopesRequest
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[ListEnvelopesResponse](err)
 	}
@@ -93,13 +118,17 @@ func (api *SignplusService) ListEnvelopes(ctx context.Context, listEnvelopesRequ
 func (api *SignplusService) GetEnvelope(ctx context.Context, envelopeId string) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/envelope/{envelope_id}").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "GET", "/envelope/{envelope_id}", config)
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -111,13 +140,17 @@ func (api *SignplusService) GetEnvelope(ctx context.Context, envelopeId string) 
 func (api *SignplusService) DeleteEnvelope(ctx context.Context, envelopeId string) (*shared.SignplusResponse[any], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("DELETE").
+		WithPath("/envelope/{envelope_id}").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[any](config)
-
-	request := httptransport.NewRequest(ctx, "DELETE", "/envelope/{envelope_id}", config)
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[any](err)
 	}
@@ -129,14 +162,18 @@ func (api *SignplusService) DeleteEnvelope(ctx context.Context, envelopeId strin
 func (api *SignplusService) GetEnvelopeDocument(ctx context.Context, envelopeId string, documentId string) (*shared.SignplusResponse[Document], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/envelope/{envelope_id}/document/{document_id}").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		AddPathParam("document_id", documentId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Document](config)
-
-	request := httptransport.NewRequest(ctx, "GET", "/envelope/{envelope_id}/document/{document_id}", config)
-
-	request.SetPathParam("envelope_id", envelopeId)
-	request.SetPathParam("document_id", documentId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Document](err)
 	}
@@ -148,13 +185,17 @@ func (api *SignplusService) GetEnvelopeDocument(ctx context.Context, envelopeId 
 func (api *SignplusService) GetEnvelopeDocuments(ctx context.Context, envelopeId string) (*shared.SignplusResponse[ListEnvelopeDocumentsResponse], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/envelope/{envelope_id}/documents").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[ListEnvelopeDocumentsResponse](config)
-
-	request := httptransport.NewRequest(ctx, "GET", "/envelope/{envelope_id}/documents", config)
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[ListEnvelopeDocumentsResponse](err)
 	}
@@ -166,15 +207,18 @@ func (api *SignplusService) GetEnvelopeDocuments(ctx context.Context, envelopeId
 func (api *SignplusService) AddEnvelopeDocument(ctx context.Context, envelopeId string, addEnvelopeDocumentRequest AddEnvelopeDocumentRequest) (*shared.SignplusResponse[Document], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/envelope/{envelope_id}/document").
+		WithConfig(config).
+		WithBody(addEnvelopeDocumentRequest).
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeMultipartFormData).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Document](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/envelope/{envelope_id}/document", config)
-
-	request.Body = addEnvelopeDocumentRequest
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Document](err)
 	}
@@ -186,15 +230,19 @@ func (api *SignplusService) AddEnvelopeDocument(ctx context.Context, envelopeId 
 func (api *SignplusService) SetEnvelopeDynamicFields(ctx context.Context, envelopeId string, setEnvelopeDynamicFieldsRequest SetEnvelopeDynamicFieldsRequest) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/envelope/{envelope_id}/dynamic_fields").
+		WithConfig(config).
+		WithBody(setEnvelopeDynamicFieldsRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "PUT", "/envelope/{envelope_id}/dynamic_fields", config)
-
-	request.Body = setEnvelopeDynamicFieldsRequest
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -206,15 +254,19 @@ func (api *SignplusService) SetEnvelopeDynamicFields(ctx context.Context, envelo
 func (api *SignplusService) AddEnvelopeSigningSteps(ctx context.Context, envelopeId string, addEnvelopeSigningStepsRequest AddEnvelopeSigningStepsRequest) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/envelope/{envelope_id}/signing_steps").
+		WithConfig(config).
+		WithBody(addEnvelopeSigningStepsRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/envelope/{envelope_id}/signing_steps", config)
-
-	request.Body = addEnvelopeSigningStepsRequest
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -226,13 +278,17 @@ func (api *SignplusService) AddEnvelopeSigningSteps(ctx context.Context, envelop
 func (api *SignplusService) SendEnvelope(ctx context.Context, envelopeId string) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/envelope/{envelope_id}/send").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/envelope/{envelope_id}/send", config)
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -244,13 +300,17 @@ func (api *SignplusService) SendEnvelope(ctx context.Context, envelopeId string)
 func (api *SignplusService) DuplicateEnvelope(ctx context.Context, envelopeId string) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/envelope/{envelope_id}/duplicate").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/envelope/{envelope_id}/duplicate", config)
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -262,13 +322,17 @@ func (api *SignplusService) DuplicateEnvelope(ctx context.Context, envelopeId st
 func (api *SignplusService) VoidEnvelope(ctx context.Context, envelopeId string) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/envelope/{envelope_id}/void").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "PUT", "/envelope/{envelope_id}/void", config)
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -280,15 +344,19 @@ func (api *SignplusService) VoidEnvelope(ctx context.Context, envelopeId string)
 func (api *SignplusService) RenameEnvelope(ctx context.Context, envelopeId string, renameEnvelopeRequest RenameEnvelopeRequest) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/envelope/{envelope_id}/rename").
+		WithConfig(config).
+		WithBody(renameEnvelopeRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "PUT", "/envelope/{envelope_id}/rename", config)
-
-	request.Body = renameEnvelopeRequest
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -300,15 +368,19 @@ func (api *SignplusService) RenameEnvelope(ctx context.Context, envelopeId strin
 func (api *SignplusService) SetEnvelopeComment(ctx context.Context, envelopeId string, setEnvelopeCommentRequest SetEnvelopeCommentRequest) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/envelope/{envelope_id}/set_comment").
+		WithConfig(config).
+		WithBody(setEnvelopeCommentRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "PUT", "/envelope/{envelope_id}/set_comment", config)
-
-	request.Body = setEnvelopeCommentRequest
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -320,15 +392,19 @@ func (api *SignplusService) SetEnvelopeComment(ctx context.Context, envelopeId s
 func (api *SignplusService) SetEnvelopeNotification(ctx context.Context, envelopeId string, envelopeNotification EnvelopeNotification) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/envelope/{envelope_id}/set_notification").
+		WithConfig(config).
+		WithBody(envelopeNotification).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "PUT", "/envelope/{envelope_id}/set_notification", config)
-
-	request.Body = envelopeNotification
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -340,15 +416,19 @@ func (api *SignplusService) SetEnvelopeNotification(ctx context.Context, envelop
 func (api *SignplusService) SetEnvelopeExpirationDate(ctx context.Context, envelopeId string, setEnvelopeExpirationRequest SetEnvelopeExpirationRequest) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/envelope/{envelope_id}/set_expiration_date").
+		WithConfig(config).
+		WithBody(setEnvelopeExpirationRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "PUT", "/envelope/{envelope_id}/set_expiration_date", config)
-
-	request.Body = setEnvelopeExpirationRequest
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -360,15 +440,19 @@ func (api *SignplusService) SetEnvelopeExpirationDate(ctx context.Context, envel
 func (api *SignplusService) SetEnvelopeLegalityLevel(ctx context.Context, envelopeId string, setEnvelopeLegalityLevelRequest SetEnvelopeLegalityLevelRequest) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/envelope/{envelope_id}/set_legality_level").
+		WithConfig(config).
+		WithBody(setEnvelopeLegalityLevelRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Envelope](config)
-
-	request := httptransport.NewRequest(ctx, "PUT", "/envelope/{envelope_id}/set_legality_level", config)
-
-	request.Body = setEnvelopeLegalityLevelRequest
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Envelope](err)
 	}
@@ -380,13 +464,17 @@ func (api *SignplusService) SetEnvelopeLegalityLevel(ctx context.Context, envelo
 func (api *SignplusService) GetEnvelopeAnnotations(ctx context.Context, envelopeId string) (*shared.SignplusResponse[[]Annotation], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/envelope/{envelope_id}/annotations").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[[]Annotation](config)
-
-	request := httptransport.NewRequest(ctx, "GET", "/envelope/{envelope_id}/annotations", config)
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[[]Annotation](err)
 	}
@@ -398,14 +486,18 @@ func (api *SignplusService) GetEnvelopeAnnotations(ctx context.Context, envelope
 func (api *SignplusService) GetEnvelopeDocumentAnnotations(ctx context.Context, envelopeId string, documentId string) (*shared.SignplusResponse[ListEnvelopeDocumentAnnotationsResponse], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/envelope/{envelope_id}/annotations/{document_id}").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		AddPathParam("document_id", documentId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[ListEnvelopeDocumentAnnotationsResponse](config)
-
-	request := httptransport.NewRequest(ctx, "GET", "/envelope/{envelope_id}/annotations/{document_id}", config)
-
-	request.SetPathParam("envelope_id", envelopeId)
-	request.SetPathParam("document_id", documentId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[ListEnvelopeDocumentAnnotationsResponse](err)
 	}
@@ -417,15 +509,19 @@ func (api *SignplusService) GetEnvelopeDocumentAnnotations(ctx context.Context, 
 func (api *SignplusService) AddEnvelopeAnnotation(ctx context.Context, envelopeId string, addAnnotationRequest AddAnnotationRequest) (*shared.SignplusResponse[Annotation], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/envelope/{envelope_id}/annotation").
+		WithConfig(config).
+		WithBody(addAnnotationRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Annotation](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/envelope/{envelope_id}/annotation", config)
-
-	request.Body = addAnnotationRequest
-
-	request.SetPathParam("envelope_id", envelopeId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Annotation](err)
 	}
@@ -437,14 +533,18 @@ func (api *SignplusService) AddEnvelopeAnnotation(ctx context.Context, envelopeI
 func (api *SignplusService) DeleteEnvelopeAnnotation(ctx context.Context, envelopeId string, annotationId string) (*shared.SignplusResponse[any], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("DELETE").
+		WithPath("/envelope/{envelope_id}/annotation/{annotation_id}").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		AddPathParam("annotation_id", annotationId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[any](config)
-
-	request := httptransport.NewRequest(ctx, "DELETE", "/envelope/{envelope_id}/annotation/{annotation_id}", config)
-
-	request.SetPathParam("envelope_id", envelopeId)
-	request.SetPathParam("annotation_id", annotationId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[any](err)
 	}
@@ -456,13 +556,18 @@ func (api *SignplusService) DeleteEnvelopeAnnotation(ctx context.Context, envelo
 func (api *SignplusService) CreateTemplate(ctx context.Context, createTemplateRequest CreateTemplateRequest) (*shared.SignplusResponse[Template], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/template").
+		WithConfig(config).
+		WithBody(createTemplateRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Template](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/template", config)
-
-	request.Body = createTemplateRequest
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Template](err)
 	}
@@ -474,13 +579,18 @@ func (api *SignplusService) CreateTemplate(ctx context.Context, createTemplateRe
 func (api *SignplusService) ListTemplates(ctx context.Context, listTemplatesRequest ListTemplatesRequest) (*shared.SignplusResponse[ListTemplatesResponse], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/templates").
+		WithConfig(config).
+		WithBody(listTemplatesRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[ListTemplatesResponse](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/templates", config)
-
-	request.Body = listTemplatesRequest
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[ListTemplatesResponse](err)
 	}
@@ -492,13 +602,17 @@ func (api *SignplusService) ListTemplates(ctx context.Context, listTemplatesRequ
 func (api *SignplusService) GetTemplate(ctx context.Context, templateId string) (*shared.SignplusResponse[Template], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/template/{template_id}").
+		WithConfig(config).
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Template](config)
-
-	request := httptransport.NewRequest(ctx, "GET", "/template/{template_id}", config)
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Template](err)
 	}
@@ -510,13 +624,17 @@ func (api *SignplusService) GetTemplate(ctx context.Context, templateId string) 
 func (api *SignplusService) DeleteTemplate(ctx context.Context, templateId string) (*shared.SignplusResponse[any], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("DELETE").
+		WithPath("/template/{template_id}").
+		WithConfig(config).
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[any](config)
-
-	request := httptransport.NewRequest(ctx, "DELETE", "/template/{template_id}", config)
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[any](err)
 	}
@@ -528,13 +646,17 @@ func (api *SignplusService) DeleteTemplate(ctx context.Context, templateId strin
 func (api *SignplusService) DuplicateTemplate(ctx context.Context, templateId string) (*shared.SignplusResponse[Template], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/template/{template_id}/duplicate").
+		WithConfig(config).
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Template](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/template/{template_id}/duplicate", config)
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Template](err)
 	}
@@ -546,15 +668,18 @@ func (api *SignplusService) DuplicateTemplate(ctx context.Context, templateId st
 func (api *SignplusService) AddTemplateDocument(ctx context.Context, templateId string, addTemplateDocumentRequest AddTemplateDocumentRequest) (*shared.SignplusResponse[Document], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/template/{template_id}/document").
+		WithConfig(config).
+		WithBody(addTemplateDocumentRequest).
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeMultipartFormData).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Document](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/template/{template_id}/document", config)
-
-	request.Body = addTemplateDocumentRequest
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Document](err)
 	}
@@ -566,14 +691,18 @@ func (api *SignplusService) AddTemplateDocument(ctx context.Context, templateId 
 func (api *SignplusService) GetTemplateDocument(ctx context.Context, templateId string, documentId string) (*shared.SignplusResponse[Document], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/template/{template_id}/document/{document_id}").
+		WithConfig(config).
+		AddPathParam("template_id", templateId).
+		AddPathParam("document_id", documentId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Document](config)
-
-	request := httptransport.NewRequest(ctx, "GET", "/template/{template_id}/document/{document_id}", config)
-
-	request.SetPathParam("template_id", templateId)
-	request.SetPathParam("document_id", documentId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Document](err)
 	}
@@ -585,13 +714,17 @@ func (api *SignplusService) GetTemplateDocument(ctx context.Context, templateId 
 func (api *SignplusService) GetTemplateDocuments(ctx context.Context, templateId string) (*shared.SignplusResponse[ListTemplateDocumentsResponse], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/template/{template_id}/documents").
+		WithConfig(config).
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[ListTemplateDocumentsResponse](config)
-
-	request := httptransport.NewRequest(ctx, "GET", "/template/{template_id}/documents", config)
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[ListTemplateDocumentsResponse](err)
 	}
@@ -603,15 +736,19 @@ func (api *SignplusService) GetTemplateDocuments(ctx context.Context, templateId
 func (api *SignplusService) AddTemplateSigningSteps(ctx context.Context, templateId string, addTemplateSigningStepsRequest AddTemplateSigningStepsRequest) (*shared.SignplusResponse[Template], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/template/{template_id}/signing_steps").
+		WithConfig(config).
+		WithBody(addTemplateSigningStepsRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Template](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/template/{template_id}/signing_steps", config)
-
-	request.Body = addTemplateSigningStepsRequest
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Template](err)
 	}
@@ -623,15 +760,19 @@ func (api *SignplusService) AddTemplateSigningSteps(ctx context.Context, templat
 func (api *SignplusService) RenameTemplate(ctx context.Context, templateId string, renameTemplateRequest RenameTemplateRequest) (*shared.SignplusResponse[Template], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/template/{template_id}/rename").
+		WithConfig(config).
+		WithBody(renameTemplateRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Template](config)
-
-	request := httptransport.NewRequest(ctx, "PUT", "/template/{template_id}/rename", config)
-
-	request.Body = renameTemplateRequest
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Template](err)
 	}
@@ -643,15 +784,19 @@ func (api *SignplusService) RenameTemplate(ctx context.Context, templateId strin
 func (api *SignplusService) SetTemplateComment(ctx context.Context, templateId string, setTemplateCommentRequest SetTemplateCommentRequest) (*shared.SignplusResponse[Template], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/template/{template_id}/set_comment").
+		WithConfig(config).
+		WithBody(setTemplateCommentRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Template](config)
-
-	request := httptransport.NewRequest(ctx, "PUT", "/template/{template_id}/set_comment", config)
-
-	request.Body = setTemplateCommentRequest
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Template](err)
 	}
@@ -663,15 +808,19 @@ func (api *SignplusService) SetTemplateComment(ctx context.Context, templateId s
 func (api *SignplusService) SetTemplateNotification(ctx context.Context, templateId string, envelopeNotification EnvelopeNotification) (*shared.SignplusResponse[Template], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/template/{template_id}/set_notification").
+		WithConfig(config).
+		WithBody(envelopeNotification).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Template](config)
-
-	request := httptransport.NewRequest(ctx, "PUT", "/template/{template_id}/set_notification", config)
-
-	request.Body = envelopeNotification
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Template](err)
 	}
@@ -683,13 +832,17 @@ func (api *SignplusService) SetTemplateNotification(ctx context.Context, templat
 func (api *SignplusService) GetTemplateAnnotations(ctx context.Context, templateId string) (*shared.SignplusResponse[ListTemplateAnnotationsResponse], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/template/{template_id}/annotations").
+		WithConfig(config).
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[ListTemplateAnnotationsResponse](config)
-
-	request := httptransport.NewRequest(ctx, "GET", "/template/{template_id}/annotations", config)
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[ListTemplateAnnotationsResponse](err)
 	}
@@ -701,14 +854,18 @@ func (api *SignplusService) GetTemplateAnnotations(ctx context.Context, template
 func (api *SignplusService) GetDocumentTemplateAnnotations(ctx context.Context, templateId string, documentId string) (*shared.SignplusResponse[ListTemplateDocumentAnnotationsResponse], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/template/{template_id}/annotations/{document_id}").
+		WithConfig(config).
+		AddPathParam("template_id", templateId).
+		AddPathParam("document_id", documentId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[ListTemplateDocumentAnnotationsResponse](config)
-
-	request := httptransport.NewRequest(ctx, "GET", "/template/{template_id}/annotations/{document_id}", config)
-
-	request.SetPathParam("template_id", templateId)
-	request.SetPathParam("document_id", documentId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[ListTemplateDocumentAnnotationsResponse](err)
 	}
@@ -720,15 +877,19 @@ func (api *SignplusService) GetDocumentTemplateAnnotations(ctx context.Context, 
 func (api *SignplusService) AddTemplateAnnotation(ctx context.Context, templateId string, addAnnotationRequest AddAnnotationRequest) (*shared.SignplusResponse[Annotation], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/template/{template_id}/annotation").
+		WithConfig(config).
+		WithBody(addAnnotationRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Annotation](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/template/{template_id}/annotation", config)
-
-	request.Body = addAnnotationRequest
-
-	request.SetPathParam("template_id", templateId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Annotation](err)
 	}
@@ -740,14 +901,18 @@ func (api *SignplusService) AddTemplateAnnotation(ctx context.Context, templateI
 func (api *SignplusService) DeleteTemplateAnnotation(ctx context.Context, templateId string, annotationId string) (*shared.SignplusResponse[any], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("DELETE").
+		WithPath("/template/{template_id}/annotation/{annotation_id}").
+		WithConfig(config).
+		AddPathParam("template_id", templateId).
+		AddPathParam("annotation_id", annotationId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[any](config)
-
-	request := httptransport.NewRequest(ctx, "DELETE", "/template/{template_id}/annotation/{annotation_id}", config)
-
-	request.SetPathParam("template_id", templateId)
-	request.SetPathParam("annotation_id", annotationId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[any](err)
 	}
@@ -759,13 +924,18 @@ func (api *SignplusService) DeleteTemplateAnnotation(ctx context.Context, templa
 func (api *SignplusService) CreateWebhook(ctx context.Context, createWebhookRequest CreateWebhookRequest) (*shared.SignplusResponse[Webhook], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/webhook").
+		WithConfig(config).
+		WithBody(createWebhookRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[Webhook](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/webhook", config)
-
-	request.Body = createWebhookRequest
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[Webhook](err)
 	}
@@ -777,13 +947,18 @@ func (api *SignplusService) CreateWebhook(ctx context.Context, createWebhookRequ
 func (api *SignplusService) ListWebhooks(ctx context.Context, listWebhooksRequest ListWebhooksRequest) (*shared.SignplusResponse[ListWebhooksResponse], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("POST").
+		WithPath("/webhooks").
+		WithConfig(config).
+		WithBody(listWebhooksRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[ListWebhooksResponse](config)
-
-	request := httptransport.NewRequest(ctx, "POST", "/webhooks", config)
-
-	request.Body = listWebhooksRequest
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[ListWebhooksResponse](err)
 	}
@@ -795,13 +970,17 @@ func (api *SignplusService) ListWebhooks(ctx context.Context, listWebhooksReques
 func (api *SignplusService) DeleteWebhook(ctx context.Context, webhookId string) (*shared.SignplusResponse[any], *shared.SignplusError) {
 	config := *api.getConfig()
 
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("DELETE").
+		WithPath("/webhook/{webhook_id}").
+		WithConfig(config).
+		AddPathParam("webhook_id", webhookId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
 	client := restClient.NewRestClient[any](config)
-
-	request := httptransport.NewRequest(ctx, "DELETE", "/webhook/{webhook_id}", config)
-
-	request.SetPathParam("webhook_id", webhookId)
-
-	resp, err := client.Call(request)
+	resp, err := client.Call(*request)
 	if err != nil {
 		return nil, shared.NewSignplusError[any](err)
 	}

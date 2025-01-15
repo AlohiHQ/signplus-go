@@ -4,10 +4,13 @@
 *.dll
 *.so
 *.dylib
-.DStore
 
 # Output of go coverage
 *.out
 
 # Environment variables
 .env
+
+# OS generated files
+.DS_Store
+Thumbs.db
