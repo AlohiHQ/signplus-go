@@ -22,6 +22,9 @@ func main() {
 	request := signplus.CreateEnvelopeRequest{}
 	request.SetName("Name")
 	request.SetLegalityLevel(envelopeLegalityLevel)
+	request.SetExpiresAt(int64(123))
+	request.SetComment("Comment")
+	request.SetSandbox(true)
 
 	response, err := client.Signplus.CreateEnvelope(context.Background(), request)
 	if err != nil {
