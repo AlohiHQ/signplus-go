@@ -31,6 +31,7 @@ func (l *ListEnvelopeDocumentAnnotationsResponse) SetAnnotationsNil() {
 	l.touched["Annotations"] = true
 	l.Annotations = nil
 }
+
 func (l ListEnvelopeDocumentAnnotationsResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -41,4 +42,12 @@ func (l ListEnvelopeDocumentAnnotationsResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (l ListEnvelopeDocumentAnnotationsResponse) String() string {
+	jsonData, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return "error converting struct: ListEnvelopeDocumentAnnotationsResponse to string"
+	}
+	return string(jsonData)
 }

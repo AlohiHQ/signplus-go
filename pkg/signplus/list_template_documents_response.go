@@ -31,6 +31,7 @@ func (l *ListTemplateDocumentsResponse) SetDocumentsNil() {
 	l.touched["Documents"] = true
 	l.Documents = nil
 }
+
 func (l ListTemplateDocumentsResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -41,4 +42,12 @@ func (l ListTemplateDocumentsResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (l ListTemplateDocumentsResponse) String() string {
+	jsonData, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return "error converting struct: ListTemplateDocumentsResponse to string"
+	}
+	return string(jsonData)
 }

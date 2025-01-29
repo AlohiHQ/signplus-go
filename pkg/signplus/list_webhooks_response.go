@@ -31,6 +31,7 @@ func (l *ListWebhooksResponse) SetWebhooksNil() {
 	l.touched["Webhooks"] = true
 	l.Webhooks = nil
 }
+
 func (l ListWebhooksResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -41,4 +42,12 @@ func (l ListWebhooksResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (l ListWebhooksResponse) String() string {
+	jsonData, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return "error converting struct: ListWebhooksResponse to string"
+	}
+	return string(jsonData)
 }

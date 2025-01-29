@@ -57,6 +57,7 @@ func (c *CreateWebhookRequest) SetTargetNil() {
 	c.touched["Target"] = true
 	c.Target = nil
 }
+
 func (c CreateWebhookRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -73,4 +74,12 @@ func (c CreateWebhookRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (c CreateWebhookRequest) String() string {
+	jsonData, err := json.MarshalIndent(c, "", "  ")
+	if err != nil {
+		return "error converting struct: CreateWebhookRequest to string"
+	}
+	return string(jsonData)
 }

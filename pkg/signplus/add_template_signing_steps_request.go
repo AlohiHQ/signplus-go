@@ -32,6 +32,7 @@ func (a *AddTemplateSigningStepsRequest) SetSigningStepsNil() {
 	a.touched["SigningSteps"] = true
 	a.SigningSteps = nil
 }
+
 func (a AddTemplateSigningStepsRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (a AddTemplateSigningStepsRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (a AddTemplateSigningStepsRequest) String() string {
+	jsonData, err := json.MarshalIndent(a, "", "  ")
+	if err != nil {
+		return "error converting struct: AddTemplateSigningStepsRequest to string"
+	}
+	return string(jsonData)
 }

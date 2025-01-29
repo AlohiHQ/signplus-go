@@ -81,6 +81,7 @@ func (l *ListTemplatesResponse) SetTemplatesNil() {
 	l.touched["Templates"] = true
 	l.Templates = nil
 }
+
 func (l ListTemplatesResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -103,4 +104,12 @@ func (l ListTemplatesResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (l ListTemplatesResponse) String() string {
+	jsonData, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return "error converting struct: ListTemplatesResponse to string"
+	}
+	return string(jsonData)
 }

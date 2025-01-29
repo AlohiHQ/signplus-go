@@ -82,6 +82,7 @@ func (c *CreateEnvelopeFromTemplateRequest) SetSandboxNil() {
 	c.touched["Sandbox"] = true
 	c.Sandbox = nil
 }
+
 func (c CreateEnvelopeFromTemplateRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -104,4 +105,12 @@ func (c CreateEnvelopeFromTemplateRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (c CreateEnvelopeFromTemplateRequest) String() string {
+	jsonData, err := json.MarshalIndent(c, "", "  ")
+	if err != nil {
+		return "error converting struct: CreateEnvelopeFromTemplateRequest to string"
+	}
+	return string(jsonData)
 }

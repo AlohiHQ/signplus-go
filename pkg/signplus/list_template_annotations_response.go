@@ -31,6 +31,7 @@ func (l *ListTemplateAnnotationsResponse) SetAnnotationsNil() {
 	l.touched["Annotations"] = true
 	l.Annotations = nil
 }
+
 func (l ListTemplateAnnotationsResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -41,4 +42,12 @@ func (l ListTemplateAnnotationsResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (l ListTemplateAnnotationsResponse) String() string {
+	jsonData, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return "error converting struct: ListTemplateAnnotationsResponse to string"
+	}
+	return string(jsonData)
 }

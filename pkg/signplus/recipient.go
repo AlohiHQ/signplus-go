@@ -156,6 +156,7 @@ func (r *Recipient) SetVerificationNil() {
 	r.touched["Verification"] = true
 	r.Verification = nil
 }
+
 func (r Recipient) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -196,4 +197,12 @@ func (r Recipient) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (r Recipient) String() string {
+	jsonData, err := json.MarshalIndent(r, "", "  ")
+	if err != nil {
+		return "error converting struct: Recipient to string"
+	}
+	return string(jsonData)
 }

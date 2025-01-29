@@ -31,6 +31,7 @@ func (c *CreateTemplateRequest) SetNameNil() {
 	c.touched["Name"] = true
 	c.Name = nil
 }
+
 func (c CreateTemplateRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -41,4 +42,12 @@ func (c CreateTemplateRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (c CreateTemplateRequest) String() string {
+	jsonData, err := json.MarshalIndent(c, "", "  ")
+	if err != nil {
+		return "error converting struct: CreateTemplateRequest to string"
+	}
+	return string(jsonData)
 }

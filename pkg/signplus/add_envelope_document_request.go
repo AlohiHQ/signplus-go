@@ -32,6 +32,7 @@ func (a *AddEnvelopeDocumentRequest) SetFileNil() {
 	a.touched["File"] = true
 	a.File = nil
 }
+
 func (a AddEnvelopeDocumentRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (a AddEnvelopeDocumentRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (a AddEnvelopeDocumentRequest) String() string {
+	jsonData, err := json.MarshalIndent(a, "", "  ")
+	if err != nil {
+		return "error converting struct: AddEnvelopeDocumentRequest to string"
+	}
+	return string(jsonData)
 }

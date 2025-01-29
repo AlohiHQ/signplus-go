@@ -32,6 +32,7 @@ func (a *AddTemplateDocumentRequest) SetFileNil() {
 	a.touched["File"] = true
 	a.File = nil
 }
+
 func (a AddTemplateDocumentRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (a AddTemplateDocumentRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (a AddTemplateDocumentRequest) String() string {
+	jsonData, err := json.MarshalIndent(a, "", "  ")
+	if err != nil {
+		return "error converting struct: AddTemplateDocumentRequest to string"
+	}
+	return string(jsonData)
 }

@@ -157,6 +157,7 @@ func (a *AnnotationText) SetFontNil() {
 	a.touched["Font"] = true
 	a.Font = nil
 }
+
 func (a AnnotationText) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -197,4 +198,12 @@ func (a AnnotationText) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (a AnnotationText) String() string {
+	jsonData, err := json.MarshalIndent(a, "", "  ")
+	if err != nil {
+		return "error converting struct: AnnotationText to string"
+	}
+	return string(jsonData)
 }

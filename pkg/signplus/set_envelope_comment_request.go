@@ -32,6 +32,7 @@ func (s *SetEnvelopeCommentRequest) SetCommentNil() {
 	s.touched["Comment"] = true
 	s.Comment = nil
 }
+
 func (s SetEnvelopeCommentRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (s SetEnvelopeCommentRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (s SetEnvelopeCommentRequest) String() string {
+	jsonData, err := json.MarshalIndent(s, "", "  ")
+	if err != nil {
+		return "error converting struct: SetEnvelopeCommentRequest to string"
+	}
+	return string(jsonData)
 }

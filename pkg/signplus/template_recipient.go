@@ -132,6 +132,7 @@ func (t *TemplateRecipient) SetRoleNil() {
 	t.touched["Role"] = true
 	t.Role = nil
 }
+
 func (t TemplateRecipient) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -166,4 +167,12 @@ func (t TemplateRecipient) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (t TemplateRecipient) String() string {
+	jsonData, err := json.MarshalIndent(t, "", "  ")
+	if err != nil {
+		return "error converting struct: TemplateRecipient to string"
+	}
+	return string(jsonData)
 }

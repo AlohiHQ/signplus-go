@@ -1,6 +1,8 @@
 package shared
 
 import (
+	"encoding/json"
+
 	"github.com/alohihq/signplus-go/internal/clients/rest/httptransport"
 )
 
@@ -26,4 +28,12 @@ func NewSignplusResponse[T any](resp *httptransport.Response[T]) *SignplusRespon
 
 func (r *SignplusResponse[T]) GetData() T {
 	return r.Data
+}
+
+func (r SignplusResponse[T]) String() string {
+	jsonData, err := json.MarshalIndent(r, "", "  ")
+	if err != nil {
+		return "error converting struct: SignplusResponse to string"
+	}
+	return string(jsonData)
 }

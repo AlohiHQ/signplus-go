@@ -32,6 +32,7 @@ func (a *AddEnvelopeSigningStepsRequest) SetSigningStepsNil() {
 	a.touched["SigningSteps"] = true
 	a.SigningSteps = nil
 }
+
 func (a AddEnvelopeSigningStepsRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (a AddEnvelopeSigningStepsRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (a AddEnvelopeSigningStepsRequest) String() string {
+	jsonData, err := json.MarshalIndent(a, "", "  ")
+	if err != nil {
+		return "error converting struct: AddEnvelopeSigningStepsRequest to string"
+	}
+	return string(jsonData)
 }
