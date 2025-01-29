@@ -132,6 +132,7 @@ func (d *Document) SetPagesNil() {
 	d.touched["Pages"] = true
 	d.Pages = nil
 }
+
 func (d Document) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -166,4 +167,12 @@ func (d Document) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (d Document) String() string {
+	jsonData, err := json.MarshalIndent(d, "", "  ")
+	if err != nil {
+		return "error converting struct: Document to string"
+	}
+	return string(jsonData)
 }

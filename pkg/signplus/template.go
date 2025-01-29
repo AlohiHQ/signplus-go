@@ -329,6 +329,7 @@ func (t *Template) SetDynamicFieldsNil() {
 	t.touched["DynamicFields"] = true
 	t.DynamicFields = nil
 }
+
 func (t Template) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -411,4 +412,12 @@ func (t Template) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (t Template) String() string {
+	jsonData, err := json.MarshalIndent(t, "", "  ")
+	if err != nil {
+		return "error converting struct: Template to string"
+	}
+	return string(jsonData)
 }

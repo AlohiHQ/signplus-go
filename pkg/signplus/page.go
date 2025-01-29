@@ -57,6 +57,7 @@ func (p *Page) SetHeightNil() {
 	p.touched["Height"] = true
 	p.Height = nil
 }
+
 func (p Page) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -73,4 +74,12 @@ func (p Page) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (p Page) String() string {
+	jsonData, err := json.MarshalIndent(p, "", "  ")
+	if err != nil {
+		return "error converting struct: Page to string"
+	}
+	return string(jsonData)
 }

@@ -32,6 +32,7 @@ func (s *SigningStep) SetRecipientsNil() {
 	s.touched["Recipients"] = true
 	s.Recipients = nil
 }
+
 func (s SigningStep) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (s SigningStep) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (s SigningStep) String() string {
+	jsonData, err := json.MarshalIndent(s, "", "  ")
+	if err != nil {
+		return "error converting struct: SigningStep to string"
+	}
+	return string(jsonData)
 }

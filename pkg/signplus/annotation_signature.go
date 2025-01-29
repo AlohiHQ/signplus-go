@@ -33,6 +33,7 @@ func (a *AnnotationSignature) SetIdNil() {
 	a.touched["Id"] = true
 	a.Id = nil
 }
+
 func (a AnnotationSignature) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -43,4 +44,12 @@ func (a AnnotationSignature) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (a AnnotationSignature) String() string {
+	jsonData, err := json.MarshalIndent(a, "", "  ")
+	if err != nil {
+		return "error converting struct: AnnotationSignature to string"
+	}
+	return string(jsonData)
 }

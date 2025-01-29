@@ -228,6 +228,7 @@ func (l *ListTemplatesRequest) SetAscendingNil() {
 	l.touched["Ascending"] = true
 	l.Ascending = nil
 }
+
 func (l ListTemplatesRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -286,4 +287,12 @@ func (l ListTemplatesRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (l ListTemplatesRequest) String() string {
+	jsonData, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return "error converting struct: ListTemplatesRequest to string"
+	}
+	return string(jsonData)
 }

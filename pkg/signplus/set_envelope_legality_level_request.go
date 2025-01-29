@@ -32,6 +32,7 @@ func (s *SetEnvelopeLegalityLevelRequest) SetLegalityLevelNil() {
 	s.touched["LegalityLevel"] = true
 	s.LegalityLevel = nil
 }
+
 func (s SetEnvelopeLegalityLevelRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (s SetEnvelopeLegalityLevelRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (s SetEnvelopeLegalityLevelRequest) String() string {
+	jsonData, err := json.MarshalIndent(s, "", "  ")
+	if err != nil {
+		return "error converting struct: SetEnvelopeLegalityLevelRequest to string"
+	}
+	return string(jsonData)
 }

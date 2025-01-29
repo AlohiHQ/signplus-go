@@ -82,6 +82,7 @@ func (e *EnvelopeNotification) SetReminderIntervalNil() {
 	e.touched["ReminderInterval"] = true
 	e.ReminderInterval = nil
 }
+
 func (e EnvelopeNotification) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -104,4 +105,12 @@ func (e EnvelopeNotification) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (e EnvelopeNotification) String() string {
+	jsonData, err := json.MarshalIndent(e, "", "  ")
+	if err != nil {
+		return "error converting struct: EnvelopeNotification to string"
+	}
+	return string(jsonData)
 }

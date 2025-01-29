@@ -428,6 +428,7 @@ func (l *ListEnvelopesRequest) SetIncludeTrashNil() {
 	l.touched["IncludeTrash"] = true
 	l.IncludeTrash = nil
 }
+
 func (l ListEnvelopesRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -534,4 +535,12 @@ func (l ListEnvelopesRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (l ListEnvelopesRequest) String() string {
+	jsonData, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return "error converting struct: ListEnvelopesRequest to string"
+	}
+	return string(jsonData)
 }

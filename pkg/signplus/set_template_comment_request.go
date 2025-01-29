@@ -32,6 +32,7 @@ func (s *SetTemplateCommentRequest) SetCommentNil() {
 	s.touched["Comment"] = true
 	s.Comment = nil
 }
+
 func (s SetTemplateCommentRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (s SetTemplateCommentRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (s SetTemplateCommentRequest) String() string {
+	jsonData, err := json.MarshalIndent(s, "", "  ")
+	if err != nil {
+		return "error converting struct: SetTemplateCommentRequest to string"
+	}
+	return string(jsonData)
 }

@@ -58,6 +58,7 @@ func (a *AnnotationCheckbox) SetStyleNil() {
 	a.touched["Style"] = true
 	a.Style = nil
 }
+
 func (a AnnotationCheckbox) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -74,4 +75,12 @@ func (a AnnotationCheckbox) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (a AnnotationCheckbox) String() string {
+	jsonData, err := json.MarshalIndent(a, "", "  ")
+	if err != nil {
+		return "error converting struct: AnnotationCheckbox to string"
+	}
+	return string(jsonData)
 }

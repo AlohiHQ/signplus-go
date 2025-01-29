@@ -379,6 +379,7 @@ func (e *Envelope) SetNotificationNil() {
 	e.touched["Notification"] = true
 	e.Notification = nil
 }
+
 func (e Envelope) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -473,4 +474,12 @@ func (e Envelope) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (e Envelope) String() string {
+	jsonData, err := json.MarshalIndent(e, "", "  ")
+	if err != nil {
+		return "error converting struct: Envelope to string"
+	}
+	return string(jsonData)
 }

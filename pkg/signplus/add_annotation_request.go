@@ -356,6 +356,7 @@ func (a *AddAnnotationRequest) SetCheckboxNil() {
 	a.touched["Checkbox"] = true
 	a.Checkbox = nil
 }
+
 func (a AddAnnotationRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -444,4 +445,12 @@ func (a AddAnnotationRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (a AddAnnotationRequest) String() string {
+	jsonData, err := json.MarshalIndent(a, "", "  ")
+	if err != nil {
+		return "error converting struct: AddAnnotationRequest to string"
+	}
+	return string(jsonData)
 }

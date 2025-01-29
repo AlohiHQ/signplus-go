@@ -32,6 +32,7 @@ func (r *RenameTemplateRequest) SetNameNil() {
 	r.touched["Name"] = true
 	r.Name = nil
 }
+
 func (r RenameTemplateRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (r RenameTemplateRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (r RenameTemplateRequest) String() string {
+	jsonData, err := json.MarshalIndent(r, "", "  ")
+	if err != nil {
+		return "error converting struct: RenameTemplateRequest to string"
+	}
+	return string(jsonData)
 }

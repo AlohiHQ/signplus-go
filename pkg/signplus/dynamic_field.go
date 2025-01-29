@@ -57,6 +57,7 @@ func (d *DynamicField) SetValueNil() {
 	d.touched["Value"] = true
 	d.Value = nil
 }
+
 func (d DynamicField) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -73,4 +74,12 @@ func (d DynamicField) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (d DynamicField) String() string {
+	jsonData, err := json.MarshalIndent(d, "", "  ")
+	if err != nil {
+		return "error converting struct: DynamicField to string"
+	}
+	return string(jsonData)
 }

@@ -32,6 +32,7 @@ func (r *RenameEnvelopeRequest) SetNameNil() {
 	r.touched["Name"] = true
 	r.Name = nil
 }
+
 func (r RenameEnvelopeRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (r RenameEnvelopeRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (r RenameEnvelopeRequest) String() string {
+	jsonData, err := json.MarshalIndent(r, "", "  ")
+	if err != nil {
+		return "error converting struct: RenameEnvelopeRequest to string"
+	}
+	return string(jsonData)
 }

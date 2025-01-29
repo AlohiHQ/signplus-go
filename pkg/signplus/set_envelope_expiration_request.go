@@ -32,6 +32,7 @@ func (s *SetEnvelopeExpirationRequest) SetExpiresAtNil() {
 	s.touched["ExpiresAt"] = true
 	s.ExpiresAt = nil
 }
+
 func (s SetEnvelopeExpirationRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (s SetEnvelopeExpirationRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (s SetEnvelopeExpirationRequest) String() string {
+	jsonData, err := json.MarshalIndent(s, "", "  ")
+	if err != nil {
+		return "error converting struct: SetEnvelopeExpirationRequest to string"
+	}
+	return string(jsonData)
 }

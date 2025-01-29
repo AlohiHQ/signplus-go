@@ -81,6 +81,7 @@ func (l *ListEnvelopesResponse) SetEnvelopesNil() {
 	l.touched["Envelopes"] = true
 	l.Envelopes = nil
 }
+
 func (l ListEnvelopesResponse) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -103,4 +104,12 @@ func (l ListEnvelopesResponse) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (l ListEnvelopesResponse) String() string {
+	jsonData, err := json.MarshalIndent(l, "", "  ")
+	if err != nil {
+		return "error converting struct: ListEnvelopesResponse to string"
+	}
+	return string(jsonData)
 }

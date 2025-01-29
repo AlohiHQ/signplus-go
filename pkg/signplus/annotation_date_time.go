@@ -182,6 +182,7 @@ func (a *AnnotationDateTime) SetFormatNil() {
 	a.touched["Format"] = true
 	a.Format = nil
 }
+
 func (a AnnotationDateTime) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -228,4 +229,12 @@ func (a AnnotationDateTime) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (a AnnotationDateTime) String() string {
+	jsonData, err := json.MarshalIndent(a, "", "  ")
+	if err != nil {
+		return "error converting struct: AnnotationDateTime to string"
+	}
+	return string(jsonData)
 }

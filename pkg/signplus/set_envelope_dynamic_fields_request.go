@@ -32,6 +32,7 @@ func (s *SetEnvelopeDynamicFieldsRequest) SetDynamicFieldsNil() {
 	s.touched["DynamicFields"] = true
 	s.DynamicFields = nil
 }
+
 func (s SetEnvelopeDynamicFieldsRequest) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -42,4 +43,12 @@ func (s SetEnvelopeDynamicFieldsRequest) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (s SetEnvelopeDynamicFieldsRequest) String() string {
+	jsonData, err := json.MarshalIndent(s, "", "  ")
+	if err != nil {
+		return "error converting struct: SetEnvelopeDynamicFieldsRequest to string"
+	}
+	return string(jsonData)
 }

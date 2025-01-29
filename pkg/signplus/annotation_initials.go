@@ -33,6 +33,7 @@ func (a *AnnotationInitials) SetIdNil() {
 	a.touched["Id"] = true
 	a.Id = nil
 }
+
 func (a AnnotationInitials) MarshalJSON() ([]byte, error) {
 	data := make(map[string]any)
 
@@ -43,4 +44,12 @@ func (a AnnotationInitials) MarshalJSON() ([]byte, error) {
 	}
 
 	return json.Marshal(data)
+}
+
+func (a AnnotationInitials) String() string {
+	jsonData, err := json.MarshalIndent(a, "", "  ")
+	if err != nil {
+		return "error converting struct: AnnotationInitials to string"
+	}
+	return string(jsonData)
 }
