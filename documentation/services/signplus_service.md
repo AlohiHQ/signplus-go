@@ -2,49 +2,51 @@
 
 A list of all methods in the `SignplusService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                           | Description                       |
-| :---------------------------------------------------------------- | :-------------------------------- |
-| [CreateEnvelope](#createenvelope)                                 | Create new envelope               |
-| [CreateEnvelopeFromTemplate](#createenvelopefromtemplate)         | Create new envelope from template |
-| [ListEnvelopes](#listenvelopes)                                   | List envelopes                    |
-| [GetEnvelope](#getenvelope)                                       | Get envelope                      |
-| [DeleteEnvelope](#deleteenvelope)                                 | Delete envelope                   |
-| [GetEnvelopeDocument](#getenvelopedocument)                       | Get envelope document             |
-| [GetEnvelopeDocuments](#getenvelopedocuments)                     | Get envelope documents            |
-| [AddEnvelopeDocument](#addenvelopedocument)                       | Add envelope document             |
-| [SetEnvelopeDynamicFields](#setenvelopedynamicfields)             | Set envelope dynamic fields       |
-| [AddEnvelopeSigningSteps](#addenvelopesigningsteps)               | Add envelope signing steps        |
-| [SendEnvelope](#sendenvelope)                                     | Send envelope for signature       |
-| [DuplicateEnvelope](#duplicateenvelope)                           | Duplicate envelope                |
-| [VoidEnvelope](#voidenvelope)                                     | Void envelope                     |
-| [RenameEnvelope](#renameenvelope)                                 | Rename envelope                   |
-| [SetEnvelopeComment](#setenvelopecomment)                         | Set envelope comment              |
-| [SetEnvelopeNotification](#setenvelopenotification)               | Set envelope notification         |
-| [SetEnvelopeExpirationDate](#setenvelopeexpirationdate)           | Set envelope expiration date      |
-| [SetEnvelopeLegalityLevel](#setenvelopelegalitylevel)             | Set envelope legality level       |
-| [GetEnvelopeAnnotations](#getenvelopeannotations)                 | Get envelope annotations          |
-| [GetEnvelopeDocumentAnnotations](#getenvelopedocumentannotations) | Get envelope document annotations |
-| [AddEnvelopeAnnotation](#addenvelopeannotation)                   | Add envelope annotation           |
-| [DeleteEnvelopeAnnotation](#deleteenvelopeannotation)             | Delete envelope annotation        |
-| [CreateTemplate](#createtemplate)                                 | Create new template               |
-| [ListTemplates](#listtemplates)                                   | List templates                    |
-| [GetTemplate](#gettemplate)                                       | Get template                      |
-| [DeleteTemplate](#deletetemplate)                                 | Delete template                   |
-| [DuplicateTemplate](#duplicatetemplate)                           | Duplicate template                |
-| [AddTemplateDocument](#addtemplatedocument)                       | Add template document             |
-| [GetTemplateDocument](#gettemplatedocument)                       | Get template document             |
-| [GetTemplateDocuments](#gettemplatedocuments)                     | Get template documents            |
-| [AddTemplateSigningSteps](#addtemplatesigningsteps)               | Add template signing steps        |
-| [RenameTemplate](#renametemplate)                                 | Rename template                   |
-| [SetTemplateComment](#settemplatecomment)                         | Set template comment              |
-| [SetTemplateNotification](#settemplatenotification)               | Set template notification         |
-| [GetTemplateAnnotations](#gettemplateannotations)                 | Get template annotations          |
-| [GetDocumentTemplateAnnotations](#getdocumenttemplateannotations) | Get document template annotations |
-| [AddTemplateAnnotation](#addtemplateannotation)                   | Add template annotation           |
-| [DeleteTemplateAnnotation](#deletetemplateannotation)             | Delete template annotation        |
-| [CreateWebhook](#createwebhook)                                   | Create webhook                    |
-| [ListWebhooks](#listwebhooks)                                     | List webhooks                     |
-| [DeleteWebhook](#deletewebhook)                                   | Delete webhook                    |
+| Methods                                                             | Description                                        |
+| :------------------------------------------------------------------ | :------------------------------------------------- |
+| [CreateEnvelope](#createenvelope)                                   | Create new envelope                                |
+| [CreateEnvelopeFromTemplate](#createenvelopefromtemplate)           | Create new envelope from template                  |
+| [ListEnvelopes](#listenvelopes)                                     | List envelopes                                     |
+| [GetEnvelope](#getenvelope)                                         | Get envelope                                       |
+| [DeleteEnvelope](#deleteenvelope)                                   | Delete envelope                                    |
+| [DownloadEnvelopeSignedDocuments](#downloadenvelopesigneddocuments) | Download signed documents for an envelope          |
+| [DownloadEnvelopeCertificate](#downloadenvelopecertificate)         | Download certificate of completion for an envelope |
+| [GetEnvelopeDocument](#getenvelopedocument)                         | Get envelope document                              |
+| [GetEnvelopeDocuments](#getenvelopedocuments)                       | Get envelope documents                             |
+| [AddEnvelopeDocument](#addenvelopedocument)                         | Add envelope document                              |
+| [SetEnvelopeDynamicFields](#setenvelopedynamicfields)               | Set envelope dynamic fields                        |
+| [AddEnvelopeSigningSteps](#addenvelopesigningsteps)                 | Add envelope signing steps                         |
+| [SendEnvelope](#sendenvelope)                                       | Send envelope for signature                        |
+| [DuplicateEnvelope](#duplicateenvelope)                             | Duplicate envelope                                 |
+| [VoidEnvelope](#voidenvelope)                                       | Void envelope                                      |
+| [RenameEnvelope](#renameenvelope)                                   | Rename envelope                                    |
+| [SetEnvelopeComment](#setenvelopecomment)                           | Set envelope comment                               |
+| [SetEnvelopeNotification](#setenvelopenotification)                 | Set envelope notification                          |
+| [SetEnvelopeExpirationDate](#setenvelopeexpirationdate)             | Set envelope expiration date                       |
+| [SetEnvelopeLegalityLevel](#setenvelopelegalitylevel)               | Set envelope legality level                        |
+| [GetEnvelopeAnnotations](#getenvelopeannotations)                   | Get envelope annotations                           |
+| [GetEnvelopeDocumentAnnotations](#getenvelopedocumentannotations)   | Get envelope document annotations                  |
+| [AddEnvelopeAnnotation](#addenvelopeannotation)                     | Add envelope annotation                            |
+| [DeleteEnvelopeAnnotation](#deleteenvelopeannotation)               | Delete envelope annotation                         |
+| [CreateTemplate](#createtemplate)                                   | Create new template                                |
+| [ListTemplates](#listtemplates)                                     | List templates                                     |
+| [GetTemplate](#gettemplate)                                         | Get template                                       |
+| [DeleteTemplate](#deletetemplate)                                   | Delete template                                    |
+| [DuplicateTemplate](#duplicatetemplate)                             | Duplicate template                                 |
+| [AddTemplateDocument](#addtemplatedocument)                         | Add template document                              |
+| [GetTemplateDocument](#gettemplatedocument)                         | Get template document                              |
+| [GetTemplateDocuments](#gettemplatedocuments)                       | Get template documents                             |
+| [AddTemplateSigningSteps](#addtemplatesigningsteps)                 | Add template signing steps                         |
+| [RenameTemplate](#renametemplate)                                   | Rename template                                    |
+| [SetTemplateComment](#settemplatecomment)                           | Set template comment                               |
+| [SetTemplateNotification](#settemplatenotification)                 | Set template notification                          |
+| [GetTemplateAnnotations](#gettemplateannotations)                   | Get template annotations                           |
+| [GetDocumentTemplateAnnotations](#getdocumenttemplateannotations)   | Get document template annotations                  |
+| [AddTemplateAnnotation](#addtemplateannotation)                     | Add template annotation                            |
+| [DeleteTemplateAnnotation](#deletetemplateannotation)               | Delete template annotation                         |
+| [CreateWebhook](#createwebhook)                                     | Create webhook                                     |
+| [ListWebhooks](#listwebhooks)                                       | List webhooks                                      |
+| [DeleteWebhook](#deletewebhook)                                     | Delete webhook                                     |
 
 ## CreateEnvelope
 
@@ -72,6 +74,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
@@ -79,12 +82,13 @@ client := signplus.NewSignplus(config)
 
 envelopeLegalityLevel := signplus.ENVELOPE_LEGALITY_LEVEL_SES
 
-request := signplus.CreateEnvelopeRequest{}
-request.SetName("Name")
-request.SetLegalityLevel(envelopeLegalityLevel)
-request.SetExpiresAt(int64(123))
-request.SetComment("Comment")
-request.SetSandbox(true)
+request := signplus.CreateEnvelopeRequest{
+  Name: util.ToPointer("Name"),
+  LegalityLevel: &envelopeLegalityLevel,
+  ExpiresAt: util.ToPointer(int64(123)),
+  Comment: util.ToPointer("Comment"),
+  Sandbox: util.ToPointer(true),
+}
 
 response, err := client.Signplus.CreateEnvelope(context.Background(), request)
 if err != nil {
@@ -121,16 +125,18 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-request := signplus.CreateEnvelopeFromTemplateRequest{}
-request.SetName("Name")
-request.SetComment("Comment")
-request.SetSandbox(true)
+request := signplus.CreateEnvelopeFromTemplateRequest{
+  Name: util.ToPointer("Name"),
+  Comment: util.ToPointer("Comment"),
+  Sandbox: util.ToPointer(true),
+}
 
 response, err := client.Signplus.CreateEnvelopeFromTemplate(context.Background(), "templateId", request)
 if err != nil {
@@ -166,6 +172,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
@@ -175,24 +182,25 @@ envelopeStatus := signplus.ENVELOPE_STATUS_DRAFT
 
 envelopeOrderField := signplus.ENVELOPE_ORDER_FIELD_CREATION_DATE
 
-request := signplus.ListEnvelopesRequest{}
-request.SetName("Name")
-request.SetTags([]string{})
-request.SetComment("Comment")
-request.SetIds([]string{})
-request.SetStatuses([]signplus.EnvelopeStatus{envelopeStatus})
-request.SetFolderIds([]string{})
-request.SetOnlyRootFolder(true)
-request.SetDateFrom(int64(123))
-request.SetDateTo(int64(123))
-request.SetUid("Uid")
-request.SetFirst(int64(123))
-request.SetLast(int64(123))
-request.SetAfter("After")
-request.SetBefore("Before")
-request.SetOrderField(envelopeOrderField)
-request.SetAscending(true)
-request.SetIncludeTrash(true)
+request := signplus.ListEnvelopesRequest{
+  Name: util.ToPointer("Name"),
+  Tags: []string{},
+  Comment: util.ToPointer("Comment"),
+  Ids: []string{},
+  Statuses: []signplus.EnvelopeStatus{envelopeStatus},
+  FolderIds: []string{},
+  OnlyRootFolder: util.ToPointer(true),
+  DateFrom: util.ToPointer(int64(123)),
+  DateTo: util.ToPointer(int64(123)),
+  Uid: util.ToPointer("Uid"),
+  First: util.ToPointer(int64(123)),
+  Last: util.ToPointer(int64(123)),
+  After: util.ToPointer("After"),
+  Before: util.ToPointer("Before"),
+  OrderField: &envelopeOrderField,
+  Ascending: util.ToPointer(true),
+  IncludeTrash: util.ToPointer(true),
+}
 
 response, err := client.Signplus.ListEnvelopes(context.Background(), request)
 if err != nil {
@@ -228,6 +236,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -267,12 +276,99 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 response, err := client.Signplus.DeleteEnvelope(context.Background(), "envelopeId")
+if err != nil {
+  panic(err)
+}
+
+fmt.Println(response)
+```
+
+## DownloadEnvelopeSignedDocuments
+
+Download signed documents for an envelope
+
+- HTTP Method: `GET`
+- Endpoint: `/envelope/{envelope_id}/signed_documents`
+
+**Parameters**
+
+| Name       | Type                                         | Required | Description                   |
+| :--------- | :------------------------------------------- | :------- | :---------------------------- |
+| ctx        | Context                                      | ✅       | Default go language context   |
+| envelopeId | string                                       | ✅       | ID of the envelope            |
+| params     | DownloadEnvelopeSignedDocumentsRequestParams | ✅       | Additional request parameters |
+
+**Return Type**
+
+`[]byte`
+
+**Example Usage Code Snippet**
+
+```go
+import (
+  "fmt"
+  "encoding/json"
+  "github.com/alohihq/signplus-go/pkg/signplusconfig"
+  "github.com/alohihq/signplus-go/pkg/signplus"
+
+)
+
+config := signplusconfig.NewConfig()
+client := signplus.NewSignplus(config)
+
+
+params := signplus.DownloadEnvelopeSignedDocumentsRequestParams{
+
+}
+
+response, err := client.Signplus.DownloadEnvelopeSignedDocuments(context.Background(), "envelopeId", params)
+if err != nil {
+  panic(err)
+}
+
+fmt.Println(response)
+```
+
+## DownloadEnvelopeCertificate
+
+Download certificate of completion for an envelope
+
+- HTTP Method: `GET`
+- Endpoint: `/envelope/{envelope_id}/certificate`
+
+**Parameters**
+
+| Name       | Type    | Required | Description                 |
+| :--------- | :------ | :------- | :-------------------------- |
+| ctx        | Context | ✅       | Default go language context |
+| envelopeId | string  | ✅       | ID of the envelope          |
+
+**Return Type**
+
+`[]byte`
+
+**Example Usage Code Snippet**
+
+```go
+import (
+  "fmt"
+  "encoding/json"
+  "github.com/alohihq/signplus-go/pkg/signplusconfig"
+  "github.com/alohihq/signplus-go/pkg/signplus"
+
+)
+
+config := signplusconfig.NewConfig()
+client := signplus.NewSignplus(config)
+
+response, err := client.Signplus.DownloadEnvelopeCertificate(context.Background(), "envelopeId")
 if err != nil {
   panic(err)
 }
@@ -307,6 +403,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -346,6 +443,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -386,14 +484,16 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-request := signplus.AddEnvelopeDocumentRequest{}
-request.SetFile("")
+request := signplus.AddEnvelopeDocumentRequest{
+  File: []byte{},
+}
 
 response, err := client.Signplus.AddEnvelopeDocument(context.Background(), "envelopeId", request)
 if err != nil {
@@ -430,18 +530,21 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-dynamicField := signplus.DynamicField{}
-dynamicField.SetName("Name")
-dynamicField.SetValue("Value")
+dynamicField := signplus.DynamicField{
+  Name: util.ToPointer("Name"),
+  Value: util.ToPointer("Value"),
+}
 
-request := signplus.SetEnvelopeDynamicFieldsRequest{}
-request.SetDynamicFields([]signplus.DynamicField{dynamicField})
+request := signplus.SetEnvelopeDynamicFieldsRequest{
+  DynamicFields: []signplus.DynamicField{dynamicField},
+}
 
 response, err := client.Signplus.SetEnvelopeDynamicFields(context.Background(), "envelopeId", request)
 if err != nil {
@@ -478,6 +581,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
@@ -487,23 +591,27 @@ recipientRole := signplus.RECIPIENT_ROLE_SIGNER
 
 recipientVerificationType := signplus.RECIPIENT_VERIFICATION_TYPE_SMS
 
-recipientVerification := signplus.RecipientVerification{}
-recipientVerification.SetType_(recipientVerificationType)
-recipientVerification.SetValue("Value")
+recipientVerification := signplus.RecipientVerification{
+  Type_: &recipientVerificationType,
+  Value: util.ToPointer("Value"),
+}
 
-recipient := signplus.Recipient{}
-recipient.SetId("Id")
-recipient.SetUid("Uid")
-recipient.SetName("Name")
-recipient.SetEmail("Email")
-recipient.SetRole(recipientRole)
-recipient.SetVerification(recipientVerification)
+recipient := signplus.Recipient{
+  Id: util.ToPointer("Id"),
+  Uid: util.ToPointer("Uid"),
+  Name: util.ToPointer("Name"),
+  Email: util.ToPointer("Email"),
+  Role: &recipientRole,
+  Verification: &recipientVerification,
+}
 
-signingStep := signplus.SigningStep{}
-signingStep.SetRecipients([]signplus.Recipient{recipient})
+signingStep := signplus.SigningStep{
+  Recipients: []signplus.Recipient{recipient},
+}
 
-request := signplus.AddEnvelopeSigningStepsRequest{}
-request.SetSigningSteps([]signplus.SigningStep{signingStep})
+request := signplus.AddEnvelopeSigningStepsRequest{
+  SigningSteps: []signplus.SigningStep{signingStep},
+}
 
 response, err := client.Signplus.AddEnvelopeSigningSteps(context.Background(), "envelopeId", request)
 if err != nil {
@@ -539,6 +647,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -578,6 +687,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -617,6 +727,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -657,14 +768,16 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-request := signplus.RenameEnvelopeRequest{}
-request.SetName("Name")
+request := signplus.RenameEnvelopeRequest{
+  Name: util.ToPointer("Name"),
+}
 
 response, err := client.Signplus.RenameEnvelope(context.Background(), "envelopeId", request)
 if err != nil {
@@ -701,14 +814,16 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-request := signplus.SetEnvelopeCommentRequest{}
-request.SetComment("Comment")
+request := signplus.SetEnvelopeCommentRequest{
+  Comment: util.ToPointer("Comment"),
+}
 
 response, err := client.Signplus.SetEnvelopeComment(context.Background(), "envelopeId", request)
 if err != nil {
@@ -745,16 +860,18 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-request := signplus.EnvelopeNotification{}
-request.SetSubject("Subject")
-request.SetMessage("Message")
-request.SetReminderInterval(int64(123))
+request := signplus.EnvelopeNotification{
+  Subject: util.ToPointer("Subject"),
+  Message: util.ToPointer("Message"),
+  ReminderInterval: util.ToPointer(int64(123)),
+}
 
 response, err := client.Signplus.SetEnvelopeNotification(context.Background(), "envelopeId", request)
 if err != nil {
@@ -791,14 +908,16 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-request := signplus.SetEnvelopeExpirationRequest{}
-request.SetExpiresAt(int64(123))
+request := signplus.SetEnvelopeExpirationRequest{
+  ExpiresAt: util.ToPointer(int64(123)),
+}
 
 response, err := client.Signplus.SetEnvelopeExpirationDate(context.Background(), "envelopeId", request)
 if err != nil {
@@ -835,6 +954,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
@@ -842,8 +962,9 @@ client := signplus.NewSignplus(config)
 
 envelopeLegalityLevel := signplus.ENVELOPE_LEGALITY_LEVEL_SES
 
-request := signplus.SetEnvelopeLegalityLevelRequest{}
-request.SetLegalityLevel(envelopeLegalityLevel)
+request := signplus.SetEnvelopeLegalityLevelRequest{
+  LegalityLevel: &envelopeLegalityLevel,
+}
 
 response, err := client.Signplus.SetEnvelopeLegalityLevel(context.Background(), "envelopeId", request)
 if err != nil {
@@ -879,6 +1000,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -919,6 +1041,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -959,6 +1082,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
@@ -967,67 +1091,75 @@ client := signplus.NewSignplus(config)
 annotationType := signplus.ANNOTATION_TYPE_TEXT
 
 
-annotationSignature := signplus.AnnotationSignature{}
-annotationSignature.SetId("Id")
+annotationSignature := signplus.AnnotationSignature{
+  Id: util.ToPointer("Id"),
+}
 
 
-annotationInitials := signplus.AnnotationInitials{}
-annotationInitials.SetId("Id")
-
-annotationFontFamily := signplus.ANNOTATION_FONT_FAMILY_UNKNOWN
-
-annotationFont := signplus.AnnotationFont{}
-annotationFont.SetFamily(annotationFontFamily)
-annotationFont.SetItalic(true)
-annotationFont.SetBold(true)
-
-annotationText := signplus.AnnotationText{}
-annotationText.SetSize(float64(123))
-annotationText.SetColor(float64(123))
-annotationText.SetValue("Value")
-annotationText.SetTooltip("Tooltip")
-annotationText.SetDynamicFieldName("DynamicFieldName")
-annotationText.SetFont(annotationFont)
+annotationInitials := signplus.AnnotationInitials{
+  Id: util.ToPointer("Id"),
+}
 
 annotationFontFamily := signplus.ANNOTATION_FONT_FAMILY_UNKNOWN
 
-annotationFont := signplus.AnnotationFont{}
-annotationFont.SetFamily(annotationFontFamily)
-annotationFont.SetItalic(true)
-annotationFont.SetBold(true)
+annotationFont := signplus.AnnotationFont{
+  Family: &annotationFontFamily,
+  Italic: util.ToPointer(true),
+  Bold: util.ToPointer(true),
+}
+
+annotationText := signplus.AnnotationText{
+  Size: util.ToPointer(float64(123)),
+  Color: util.ToPointer(float64(123)),
+  Value: util.ToPointer("Value"),
+  Tooltip: util.ToPointer("Tooltip"),
+  DynamicFieldName: util.ToPointer("DynamicFieldName"),
+  Font: &annotationFont,
+}
+
+annotationFontFamily := signplus.ANNOTATION_FONT_FAMILY_UNKNOWN
+
+annotationFont := signplus.AnnotationFont{
+  Family: &annotationFontFamily,
+  Italic: util.ToPointer(true),
+  Bold: util.ToPointer(true),
+}
 
 annotationDateTimeFormat := signplus.ANNOTATION_DATE_TIME_FORMAT_DMY_NUMERIC_SLASH
 
-annotationDateTime := signplus.AnnotationDateTime{}
-annotationDateTime.SetSize(float64(123))
-annotationDateTime.SetFont(annotationFont)
-annotationDateTime.SetColor("Color")
-annotationDateTime.SetAutoFill(true)
-annotationDateTime.SetTimezone("Timezone")
-annotationDateTime.SetTimestamp(int64(123))
-annotationDateTime.SetFormat(annotationDateTimeFormat)
+annotationDateTime := signplus.AnnotationDateTime{
+  Size: util.ToPointer(float64(123)),
+  Font: &annotationFont,
+  Color: util.ToPointer("Color"),
+  AutoFill: util.ToPointer(true),
+  Timezone: util.ToPointer("Timezone"),
+  Timestamp: util.ToPointer(int64(123)),
+  Format: &annotationDateTimeFormat,
+}
 
 annotationCheckboxStyle := signplus.ANNOTATION_CHECKBOX_STYLE_CIRCLE_CHECK
 
-annotationCheckbox := signplus.AnnotationCheckbox{}
-annotationCheckbox.SetChecked(true)
-annotationCheckbox.SetStyle(annotationCheckboxStyle)
+annotationCheckbox := signplus.AnnotationCheckbox{
+  Checked: util.ToPointer(true),
+  Style: &annotationCheckboxStyle,
+}
 
-request := signplus.AddAnnotationRequest{}
-request.SetRecipientId("RecipientId")
-request.SetDocumentId("DocumentId")
-request.SetPage(int64(123))
-request.SetX(float64(123))
-request.SetY(float64(123))
-request.SetWidth(float64(123))
-request.SetHeight(float64(123))
-request.SetRequired(true)
-request.SetType_(annotationType)
-request.SetSignature(annotationSignature)
-request.SetInitials(annotationInitials)
-request.SetText(annotationText)
-request.SetDatetime(annotationDateTime)
-request.SetCheckbox(annotationCheckbox)
+request := signplus.AddAnnotationRequest{
+  RecipientId: util.ToPointer("RecipientId"),
+  DocumentId: util.ToPointer("DocumentId"),
+  Page: util.ToPointer(int64(123)),
+  X: util.ToPointer(float64(123)),
+  Y: util.ToPointer(float64(123)),
+  Width: util.ToPointer(float64(123)),
+  Height: util.ToPointer(float64(123)),
+  Required: util.ToPointer(true),
+  Type_: &annotationType,
+  Signature: &annotationSignature,
+  Initials: &annotationInitials,
+  Text: &annotationText,
+  Datetime: &annotationDateTime,
+  Checkbox: &annotationCheckbox,
+}
 
 response, err := client.Signplus.AddEnvelopeAnnotation(context.Background(), "envelopeId", request)
 if err != nil {
@@ -1064,6 +1196,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -1103,14 +1236,16 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-request := signplus.CreateTemplateRequest{}
-request.SetName("Name")
+request := signplus.CreateTemplateRequest{
+  Name: util.ToPointer("Name"),
+}
 
 response, err := client.Signplus.CreateTemplate(context.Background(), request)
 if err != nil {
@@ -1146,6 +1281,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
@@ -1153,16 +1289,17 @@ client := signplus.NewSignplus(config)
 
 templateOrderField := signplus.TEMPLATE_ORDER_FIELD_TEMPLATE_ID
 
-request := signplus.ListTemplatesRequest{}
-request.SetName("Name")
-request.SetTags([]string{})
-request.SetIds([]string{})
-request.SetFirst(int64(123))
-request.SetLast(int64(123))
-request.SetAfter("After")
-request.SetBefore("Before")
-request.SetOrderField(templateOrderField)
-request.SetAscending(true)
+request := signplus.ListTemplatesRequest{
+  Name: util.ToPointer("Name"),
+  Tags: []string{},
+  Ids: []string{},
+  First: util.ToPointer(int64(123)),
+  Last: util.ToPointer(int64(123)),
+  After: util.ToPointer("After"),
+  Before: util.ToPointer("Before"),
+  OrderField: &templateOrderField,
+  Ascending: util.ToPointer(true),
+}
 
 response, err := client.Signplus.ListTemplates(context.Background(), request)
 if err != nil {
@@ -1198,6 +1335,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -1237,6 +1375,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -1276,6 +1415,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -1316,14 +1456,16 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-request := signplus.AddTemplateDocumentRequest{}
-request.SetFile("")
+request := signplus.AddTemplateDocumentRequest{
+  File: []byte{},
+}
 
 response, err := client.Signplus.AddTemplateDocument(context.Background(), "templateId", request)
 if err != nil {
@@ -1360,6 +1502,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -1399,6 +1542,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -1439,6 +1583,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
@@ -1446,18 +1591,21 @@ client := signplus.NewSignplus(config)
 
 templateRecipientRole := signplus.TEMPLATE_RECIPIENT_ROLE_SIGNER
 
-templateRecipient := signplus.TemplateRecipient{}
-templateRecipient.SetId("Id")
-templateRecipient.SetUid("Uid")
-templateRecipient.SetName("Name")
-templateRecipient.SetEmail("Email")
-templateRecipient.SetRole(templateRecipientRole)
+templateRecipient := signplus.TemplateRecipient{
+  Id: util.ToPointer("Id"),
+  Uid: util.ToPointer("Uid"),
+  Name: util.ToPointer("Name"),
+  Email: util.ToPointer("Email"),
+  Role: &templateRecipientRole,
+}
 
-templateSigningStep := signplus.TemplateSigningStep{}
-templateSigningStep.SetRecipients([]signplus.TemplateRecipient{templateRecipient})
+templateSigningStep := signplus.TemplateSigningStep{
+  Recipients: []signplus.TemplateRecipient{templateRecipient},
+}
 
-request := signplus.AddTemplateSigningStepsRequest{}
-request.SetSigningSteps([]signplus.TemplateSigningStep{templateSigningStep})
+request := signplus.AddTemplateSigningStepsRequest{
+  SigningSteps: []signplus.TemplateSigningStep{templateSigningStep},
+}
 
 response, err := client.Signplus.AddTemplateSigningSteps(context.Background(), "templateId", request)
 if err != nil {
@@ -1494,14 +1642,16 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-request := signplus.RenameTemplateRequest{}
-request.SetName("Name")
+request := signplus.RenameTemplateRequest{
+  Name: util.ToPointer("Name"),
+}
 
 response, err := client.Signplus.RenameTemplate(context.Background(), "templateId", request)
 if err != nil {
@@ -1538,14 +1688,16 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-request := signplus.SetTemplateCommentRequest{}
-request.SetComment("Comment")
+request := signplus.SetTemplateCommentRequest{
+  Comment: util.ToPointer("Comment"),
+}
 
 response, err := client.Signplus.SetTemplateComment(context.Background(), "templateId", request)
 if err != nil {
@@ -1582,16 +1734,18 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
 client := signplus.NewSignplus(config)
 
 
-request := signplus.EnvelopeNotification{}
-request.SetSubject("Subject")
-request.SetMessage("Message")
-request.SetReminderInterval(int64(123))
+request := signplus.EnvelopeNotification{
+  Subject: util.ToPointer("Subject"),
+  Message: util.ToPointer("Message"),
+  ReminderInterval: util.ToPointer(int64(123)),
+}
 
 response, err := client.Signplus.SetTemplateNotification(context.Background(), "templateId", request)
 if err != nil {
@@ -1627,6 +1781,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -1667,6 +1822,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -1707,6 +1863,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
@@ -1715,67 +1872,75 @@ client := signplus.NewSignplus(config)
 annotationType := signplus.ANNOTATION_TYPE_TEXT
 
 
-annotationSignature := signplus.AnnotationSignature{}
-annotationSignature.SetId("Id")
+annotationSignature := signplus.AnnotationSignature{
+  Id: util.ToPointer("Id"),
+}
 
 
-annotationInitials := signplus.AnnotationInitials{}
-annotationInitials.SetId("Id")
-
-annotationFontFamily := signplus.ANNOTATION_FONT_FAMILY_UNKNOWN
-
-annotationFont := signplus.AnnotationFont{}
-annotationFont.SetFamily(annotationFontFamily)
-annotationFont.SetItalic(true)
-annotationFont.SetBold(true)
-
-annotationText := signplus.AnnotationText{}
-annotationText.SetSize(float64(123))
-annotationText.SetColor(float64(123))
-annotationText.SetValue("Value")
-annotationText.SetTooltip("Tooltip")
-annotationText.SetDynamicFieldName("DynamicFieldName")
-annotationText.SetFont(annotationFont)
+annotationInitials := signplus.AnnotationInitials{
+  Id: util.ToPointer("Id"),
+}
 
 annotationFontFamily := signplus.ANNOTATION_FONT_FAMILY_UNKNOWN
 
-annotationFont := signplus.AnnotationFont{}
-annotationFont.SetFamily(annotationFontFamily)
-annotationFont.SetItalic(true)
-annotationFont.SetBold(true)
+annotationFont := signplus.AnnotationFont{
+  Family: &annotationFontFamily,
+  Italic: util.ToPointer(true),
+  Bold: util.ToPointer(true),
+}
+
+annotationText := signplus.AnnotationText{
+  Size: util.ToPointer(float64(123)),
+  Color: util.ToPointer(float64(123)),
+  Value: util.ToPointer("Value"),
+  Tooltip: util.ToPointer("Tooltip"),
+  DynamicFieldName: util.ToPointer("DynamicFieldName"),
+  Font: &annotationFont,
+}
+
+annotationFontFamily := signplus.ANNOTATION_FONT_FAMILY_UNKNOWN
+
+annotationFont := signplus.AnnotationFont{
+  Family: &annotationFontFamily,
+  Italic: util.ToPointer(true),
+  Bold: util.ToPointer(true),
+}
 
 annotationDateTimeFormat := signplus.ANNOTATION_DATE_TIME_FORMAT_DMY_NUMERIC_SLASH
 
-annotationDateTime := signplus.AnnotationDateTime{}
-annotationDateTime.SetSize(float64(123))
-annotationDateTime.SetFont(annotationFont)
-annotationDateTime.SetColor("Color")
-annotationDateTime.SetAutoFill(true)
-annotationDateTime.SetTimezone("Timezone")
-annotationDateTime.SetTimestamp(int64(123))
-annotationDateTime.SetFormat(annotationDateTimeFormat)
+annotationDateTime := signplus.AnnotationDateTime{
+  Size: util.ToPointer(float64(123)),
+  Font: &annotationFont,
+  Color: util.ToPointer("Color"),
+  AutoFill: util.ToPointer(true),
+  Timezone: util.ToPointer("Timezone"),
+  Timestamp: util.ToPointer(int64(123)),
+  Format: &annotationDateTimeFormat,
+}
 
 annotationCheckboxStyle := signplus.ANNOTATION_CHECKBOX_STYLE_CIRCLE_CHECK
 
-annotationCheckbox := signplus.AnnotationCheckbox{}
-annotationCheckbox.SetChecked(true)
-annotationCheckbox.SetStyle(annotationCheckboxStyle)
+annotationCheckbox := signplus.AnnotationCheckbox{
+  Checked: util.ToPointer(true),
+  Style: &annotationCheckboxStyle,
+}
 
-request := signplus.AddAnnotationRequest{}
-request.SetRecipientId("RecipientId")
-request.SetDocumentId("DocumentId")
-request.SetPage(int64(123))
-request.SetX(float64(123))
-request.SetY(float64(123))
-request.SetWidth(float64(123))
-request.SetHeight(float64(123))
-request.SetRequired(true)
-request.SetType_(annotationType)
-request.SetSignature(annotationSignature)
-request.SetInitials(annotationInitials)
-request.SetText(annotationText)
-request.SetDatetime(annotationDateTime)
-request.SetCheckbox(annotationCheckbox)
+request := signplus.AddAnnotationRequest{
+  RecipientId: util.ToPointer("RecipientId"),
+  DocumentId: util.ToPointer("DocumentId"),
+  Page: util.ToPointer(int64(123)),
+  X: util.ToPointer(float64(123)),
+  Y: util.ToPointer(float64(123)),
+  Width: util.ToPointer(float64(123)),
+  Height: util.ToPointer(float64(123)),
+  Required: util.ToPointer(true),
+  Type_: &annotationType,
+  Signature: &annotationSignature,
+  Initials: &annotationInitials,
+  Text: &annotationText,
+  Datetime: &annotationDateTime,
+  Checkbox: &annotationCheckbox,
+}
 
 response, err := client.Signplus.AddTemplateAnnotation(context.Background(), "templateId", request)
 if err != nil {
@@ -1812,6 +1977,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()
@@ -1851,6 +2017,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
@@ -1858,9 +2025,10 @@ client := signplus.NewSignplus(config)
 
 webhookEvent := signplus.WEBHOOK_EVENT_ENVELOPE_EXPIRED
 
-request := signplus.CreateWebhookRequest{}
-request.SetEvent(webhookEvent)
-request.SetTarget("Target")
+request := signplus.CreateWebhookRequest{
+  Event: &webhookEvent,
+  Target: util.ToPointer("Target"),
+}
 
 response, err := client.Signplus.CreateWebhook(context.Background(), request)
 if err != nil {
@@ -1896,6 +2064,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
 )
 
 config := signplusconfig.NewConfig()
@@ -1903,9 +2072,10 @@ client := signplus.NewSignplus(config)
 
 webhookEvent := signplus.WEBHOOK_EVENT_ENVELOPE_EXPIRED
 
-request := signplus.ListWebhooksRequest{}
-request.SetWebhookId("WebhookId")
-request.SetEvent(webhookEvent)
+request := signplus.ListWebhooksRequest{
+  WebhookId: util.ToPointer("WebhookId"),
+  Event: &webhookEvent,
+}
 
 response, err := client.Signplus.ListWebhooks(context.Background(), request)
 if err != nil {
@@ -1941,6 +2111,7 @@ import (
   "encoding/json"
   "github.com/alohihq/signplus-go/pkg/signplusconfig"
   "github.com/alohihq/signplus-go/pkg/signplus"
+
 )
 
 config := signplusconfig.NewConfig()

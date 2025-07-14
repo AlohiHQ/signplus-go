@@ -1,8 +1,6 @@
 package signplus
 
-import (
-	"encoding/json"
-)
+import "encoding/json"
 
 type AddAnnotationRequest struct {
 	// ID of the recipient
@@ -32,7 +30,6 @@ type AddAnnotationRequest struct {
 	Datetime *AnnotationDateTime `json:"datetime,omitempty"`
 	// Checkbox annotation (null if annotation is not a checkbox)
 	Checkbox *AnnotationCheckbox `json:"checkbox,omitempty"`
-	touched  map[string]bool
 }
 
 func (a *AddAnnotationRequest) GetRecipientId() *string {
@@ -43,19 +40,7 @@ func (a *AddAnnotationRequest) GetRecipientId() *string {
 }
 
 func (a *AddAnnotationRequest) SetRecipientId(recipientId string) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["RecipientId"] = true
 	a.RecipientId = &recipientId
-}
-
-func (a *AddAnnotationRequest) SetRecipientIdNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["RecipientId"] = true
-	a.RecipientId = nil
 }
 
 func (a *AddAnnotationRequest) GetDocumentId() *string {
@@ -66,19 +51,7 @@ func (a *AddAnnotationRequest) GetDocumentId() *string {
 }
 
 func (a *AddAnnotationRequest) SetDocumentId(documentId string) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["DocumentId"] = true
 	a.DocumentId = &documentId
-}
-
-func (a *AddAnnotationRequest) SetDocumentIdNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["DocumentId"] = true
-	a.DocumentId = nil
 }
 
 func (a *AddAnnotationRequest) GetPage() *int64 {
@@ -89,19 +62,7 @@ func (a *AddAnnotationRequest) GetPage() *int64 {
 }
 
 func (a *AddAnnotationRequest) SetPage(page int64) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Page"] = true
 	a.Page = &page
-}
-
-func (a *AddAnnotationRequest) SetPageNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Page"] = true
-	a.Page = nil
 }
 
 func (a *AddAnnotationRequest) GetX() *float64 {
@@ -112,19 +73,7 @@ func (a *AddAnnotationRequest) GetX() *float64 {
 }
 
 func (a *AddAnnotationRequest) SetX(x float64) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["X"] = true
 	a.X = &x
-}
-
-func (a *AddAnnotationRequest) SetXNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["X"] = true
-	a.X = nil
 }
 
 func (a *AddAnnotationRequest) GetY() *float64 {
@@ -135,19 +84,7 @@ func (a *AddAnnotationRequest) GetY() *float64 {
 }
 
 func (a *AddAnnotationRequest) SetY(y float64) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Y"] = true
 	a.Y = &y
-}
-
-func (a *AddAnnotationRequest) SetYNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Y"] = true
-	a.Y = nil
 }
 
 func (a *AddAnnotationRequest) GetWidth() *float64 {
@@ -158,19 +95,7 @@ func (a *AddAnnotationRequest) GetWidth() *float64 {
 }
 
 func (a *AddAnnotationRequest) SetWidth(width float64) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Width"] = true
 	a.Width = &width
-}
-
-func (a *AddAnnotationRequest) SetWidthNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Width"] = true
-	a.Width = nil
 }
 
 func (a *AddAnnotationRequest) GetHeight() *float64 {
@@ -181,19 +106,7 @@ func (a *AddAnnotationRequest) GetHeight() *float64 {
 }
 
 func (a *AddAnnotationRequest) SetHeight(height float64) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Height"] = true
 	a.Height = &height
-}
-
-func (a *AddAnnotationRequest) SetHeightNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Height"] = true
-	a.Height = nil
 }
 
 func (a *AddAnnotationRequest) GetRequired() *bool {
@@ -204,19 +117,7 @@ func (a *AddAnnotationRequest) GetRequired() *bool {
 }
 
 func (a *AddAnnotationRequest) SetRequired(required bool) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Required"] = true
 	a.Required = &required
-}
-
-func (a *AddAnnotationRequest) SetRequiredNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Required"] = true
-	a.Required = nil
 }
 
 func (a *AddAnnotationRequest) GetType_() *AnnotationType {
@@ -227,19 +128,7 @@ func (a *AddAnnotationRequest) GetType_() *AnnotationType {
 }
 
 func (a *AddAnnotationRequest) SetType_(type_ AnnotationType) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Type_"] = true
 	a.Type_ = &type_
-}
-
-func (a *AddAnnotationRequest) SetType_Nil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Type_"] = true
-	a.Type_ = nil
 }
 
 func (a *AddAnnotationRequest) GetSignature() *AnnotationSignature {
@@ -250,19 +139,7 @@ func (a *AddAnnotationRequest) GetSignature() *AnnotationSignature {
 }
 
 func (a *AddAnnotationRequest) SetSignature(signature AnnotationSignature) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Signature"] = true
 	a.Signature = &signature
-}
-
-func (a *AddAnnotationRequest) SetSignatureNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Signature"] = true
-	a.Signature = nil
 }
 
 func (a *AddAnnotationRequest) GetInitials() *AnnotationInitials {
@@ -273,19 +150,7 @@ func (a *AddAnnotationRequest) GetInitials() *AnnotationInitials {
 }
 
 func (a *AddAnnotationRequest) SetInitials(initials AnnotationInitials) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Initials"] = true
 	a.Initials = &initials
-}
-
-func (a *AddAnnotationRequest) SetInitialsNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Initials"] = true
-	a.Initials = nil
 }
 
 func (a *AddAnnotationRequest) GetText() *AnnotationText {
@@ -296,19 +161,7 @@ func (a *AddAnnotationRequest) GetText() *AnnotationText {
 }
 
 func (a *AddAnnotationRequest) SetText(text AnnotationText) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Text"] = true
 	a.Text = &text
-}
-
-func (a *AddAnnotationRequest) SetTextNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Text"] = true
-	a.Text = nil
 }
 
 func (a *AddAnnotationRequest) GetDatetime() *AnnotationDateTime {
@@ -319,19 +172,7 @@ func (a *AddAnnotationRequest) GetDatetime() *AnnotationDateTime {
 }
 
 func (a *AddAnnotationRequest) SetDatetime(datetime AnnotationDateTime) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Datetime"] = true
 	a.Datetime = &datetime
-}
-
-func (a *AddAnnotationRequest) SetDatetimeNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Datetime"] = true
-	a.Datetime = nil
 }
 
 func (a *AddAnnotationRequest) GetCheckbox() *AnnotationCheckbox {
@@ -342,109 +183,7 @@ func (a *AddAnnotationRequest) GetCheckbox() *AnnotationCheckbox {
 }
 
 func (a *AddAnnotationRequest) SetCheckbox(checkbox AnnotationCheckbox) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Checkbox"] = true
 	a.Checkbox = &checkbox
-}
-
-func (a *AddAnnotationRequest) SetCheckboxNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Checkbox"] = true
-	a.Checkbox = nil
-}
-
-func (a AddAnnotationRequest) MarshalJSON() ([]byte, error) {
-	data := make(map[string]any)
-
-	if a.touched["RecipientId"] && a.RecipientId == nil {
-		data["recipient_id"] = nil
-	} else if a.RecipientId != nil {
-		data["recipient_id"] = a.RecipientId
-	}
-
-	if a.touched["DocumentId"] && a.DocumentId == nil {
-		data["document_id"] = nil
-	} else if a.DocumentId != nil {
-		data["document_id"] = a.DocumentId
-	}
-
-	if a.touched["Page"] && a.Page == nil {
-		data["page"] = nil
-	} else if a.Page != nil {
-		data["page"] = a.Page
-	}
-
-	if a.touched["X"] && a.X == nil {
-		data["x"] = nil
-	} else if a.X != nil {
-		data["x"] = a.X
-	}
-
-	if a.touched["Y"] && a.Y == nil {
-		data["y"] = nil
-	} else if a.Y != nil {
-		data["y"] = a.Y
-	}
-
-	if a.touched["Width"] && a.Width == nil {
-		data["width"] = nil
-	} else if a.Width != nil {
-		data["width"] = a.Width
-	}
-
-	if a.touched["Height"] && a.Height == nil {
-		data["height"] = nil
-	} else if a.Height != nil {
-		data["height"] = a.Height
-	}
-
-	if a.touched["Required"] && a.Required == nil {
-		data["required"] = nil
-	} else if a.Required != nil {
-		data["required"] = a.Required
-	}
-
-	if a.touched["Type_"] && a.Type_ == nil {
-		data["type"] = nil
-	} else if a.Type_ != nil {
-		data["type"] = a.Type_
-	}
-
-	if a.touched["Signature"] && a.Signature == nil {
-		data["signature"] = nil
-	} else if a.Signature != nil {
-		data["signature"] = a.Signature
-	}
-
-	if a.touched["Initials"] && a.Initials == nil {
-		data["initials"] = nil
-	} else if a.Initials != nil {
-		data["initials"] = a.Initials
-	}
-
-	if a.touched["Text"] && a.Text == nil {
-		data["text"] = nil
-	} else if a.Text != nil {
-		data["text"] = a.Text
-	}
-
-	if a.touched["Datetime"] && a.Datetime == nil {
-		data["datetime"] = nil
-	} else if a.Datetime != nil {
-		data["datetime"] = a.Datetime
-	}
-
-	if a.touched["Checkbox"] && a.Checkbox == nil {
-		data["checkbox"] = nil
-	} else if a.Checkbox != nil {
-		data["checkbox"] = a.Checkbox
-	}
-
-	return json.Marshal(data)
 }
 
 func (a AddAnnotationRequest) String() string {

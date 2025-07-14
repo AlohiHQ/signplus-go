@@ -158,6 +158,51 @@ func (api *SignplusService) DeleteEnvelope(ctx context.Context, envelopeId strin
 	return shared.NewSignplusResponse[any](resp), nil
 }
 
+// Download signed documents for an envelope
+func (api *SignplusService) DownloadEnvelopeSignedDocuments(ctx context.Context, envelopeId string, params DownloadEnvelopeSignedDocumentsRequestParams) (*shared.SignplusResponse[[]byte], *shared.SignplusError) {
+	config := *api.getConfig()
+
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/envelope/{envelope_id}/signed_documents").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		WithOptions(params).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
+	client := restClient.NewRestClient[[]byte](config)
+	resp, err := client.Call(*request)
+	if err != nil {
+		return nil, shared.NewSignplusError[[]byte](err)
+	}
+
+	return shared.NewSignplusResponse[[]byte](resp), nil
+}
+
+// Download certificate of completion for an envelope
+func (api *SignplusService) DownloadEnvelopeCertificate(ctx context.Context, envelopeId string) (*shared.SignplusResponse[[]byte], *shared.SignplusError) {
+	config := *api.getConfig()
+
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/envelope/{envelope_id}/certificate").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
+	client := restClient.NewRestClient[[]byte](config)
+	resp, err := client.Call(*request)
+	if err != nil {
+		return nil, shared.NewSignplusError[[]byte](err)
+	}
+
+	return shared.NewSignplusResponse[[]byte](resp), nil
+}
+
 // Get envelope document
 func (api *SignplusService) GetEnvelopeDocument(ctx context.Context, envelopeId string, documentId string) (*shared.SignplusResponse[Document], *shared.SignplusError) {
 	config := *api.getConfig()

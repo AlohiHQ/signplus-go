@@ -1,12 +1,9 @@
 package signplus
 
-import (
-	"encoding/json"
-)
+import "encoding/json"
 
 type CreateTemplateRequest struct {
-	Name    *string `json:"name,omitempty" required:"true"`
-	touched map[string]bool
+	Name *string `json:"name,omitempty" required:"true" maxLength:"256" minLength:"2" pattern:"^[a-zA-Z0-9][a-zA-Z0-9 ]*[a-zA-Z0-9]$"`
 }
 
 func (c *CreateTemplateRequest) GetName() *string {
@@ -17,31 +14,7 @@ func (c *CreateTemplateRequest) GetName() *string {
 }
 
 func (c *CreateTemplateRequest) SetName(name string) {
-	if c.touched == nil {
-		c.touched = map[string]bool{}
-	}
-	c.touched["Name"] = true
 	c.Name = &name
-}
-
-func (c *CreateTemplateRequest) SetNameNil() {
-	if c.touched == nil {
-		c.touched = map[string]bool{}
-	}
-	c.touched["Name"] = true
-	c.Name = nil
-}
-
-func (c CreateTemplateRequest) MarshalJSON() ([]byte, error) {
-	data := make(map[string]any)
-
-	if c.touched["Name"] && c.Name == nil {
-		data["name"] = nil
-	} else if c.Name != nil {
-		data["name"] = c.Name
-	}
-
-	return json.Marshal(data)
 }
 
 func (c CreateTemplateRequest) String() string {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/alohihq/signplus-go/pkg/signplus"
 	"github.com/alohihq/signplus-go/pkg/signplusconfig"
+	"github.com/alohihq/signplus-go/pkg/util"
 )
 
 func main() {
@@ -19,12 +20,13 @@ func main() {
 
 	envelopeLegalityLevel := signplus.ENVELOPE_LEGALITY_LEVEL_SES
 
-	request := signplus.CreateEnvelopeRequest{}
-	request.SetName("Name")
-	request.SetLegalityLevel(envelopeLegalityLevel)
-	request.SetExpiresAt(int64(123))
-	request.SetComment("Comment")
-	request.SetSandbox(true)
+	request := signplus.CreateEnvelopeRequest{
+		Name:          util.ToPointer("Name"),
+		LegalityLevel: &envelopeLegalityLevel,
+		ExpiresAt:     util.ToPointer(int64(123)),
+		Comment:       util.ToPointer("Comment"),
+		Sandbox:       util.ToPointer(true),
+	}
 
 	response, err := client.Signplus.CreateEnvelope(context.Background(), request)
 	if err != nil {

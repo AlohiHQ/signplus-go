@@ -1,14 +1,11 @@
 package signplus
 
-import (
-	"encoding/json"
-)
+import "encoding/json"
 
 // Signature annotation (null if annotation is not a signature)
 type AnnotationSignature struct {
 	// Unique identifier of the annotation signature
-	Id      *string `json:"id,omitempty"`
-	touched map[string]bool
+	Id *string `json:"id,omitempty"`
 }
 
 func (a *AnnotationSignature) GetId() *string {
@@ -19,31 +16,7 @@ func (a *AnnotationSignature) GetId() *string {
 }
 
 func (a *AnnotationSignature) SetId(id string) {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Id"] = true
 	a.Id = &id
-}
-
-func (a *AnnotationSignature) SetIdNil() {
-	if a.touched == nil {
-		a.touched = map[string]bool{}
-	}
-	a.touched["Id"] = true
-	a.Id = nil
-}
-
-func (a AnnotationSignature) MarshalJSON() ([]byte, error) {
-	data := make(map[string]any)
-
-	if a.touched["Id"] && a.Id == nil {
-		data["id"] = nil
-	} else if a.Id != nil {
-		data["id"] = a.Id
-	}
-
-	return json.Marshal(data)
 }
 
 func (a AnnotationSignature) String() string {
