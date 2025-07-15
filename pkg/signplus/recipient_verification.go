@@ -1,14 +1,20 @@
 package signplus
 
-import (
-	"encoding/json"
-)
+import "encoding/json"
 
 type RecipientVerification struct {
-	// Type of signature verification (SMS sends a code via SMS, PASSCODE requires a code to be entered)
-	Type_   *RecipientVerificationType `json:"type,omitempty"`
-	Value   *string                    `json:"value,omitempty"`
-	touched map[string]bool
+	// Type of verification the recipient must complete before accessing the envelope.
+	//
+	// - `PASSCODE`: requires a code to be entered.
+	// - `SMS`: sends a code via SMS.
+	// - `ID_VERIFICATION`: prompts the recipient to complete an automated ID and selfie check.
+	Type_ *RecipientVerificationType `json:"type,omitempty"`
+	// Required for `PASSCODE` and `SMS` verification.
+	//
+	// - `PASSCODE`: code required by the recipient to sign the document.
+	// - `SMS`: recipient's phone number.
+	// - `ID_VERIFICATION`: leave empty.
+	Value *string `json:"value,omitempty"`
 }
 
 func (r *RecipientVerification) GetType_() *RecipientVerificationType {
@@ -19,19 +25,7 @@ func (r *RecipientVerification) GetType_() *RecipientVerificationType {
 }
 
 func (r *RecipientVerification) SetType_(type_ RecipientVerificationType) {
-	if r.touched == nil {
-		r.touched = map[string]bool{}
-	}
-	r.touched["Type_"] = true
 	r.Type_ = &type_
-}
-
-func (r *RecipientVerification) SetType_Nil() {
-	if r.touched == nil {
-		r.touched = map[string]bool{}
-	}
-	r.touched["Type_"] = true
-	r.Type_ = nil
 }
 
 func (r *RecipientVerification) GetValue() *string {
@@ -42,37 +36,7 @@ func (r *RecipientVerification) GetValue() *string {
 }
 
 func (r *RecipientVerification) SetValue(value string) {
-	if r.touched == nil {
-		r.touched = map[string]bool{}
-	}
-	r.touched["Value"] = true
 	r.Value = &value
-}
-
-func (r *RecipientVerification) SetValueNil() {
-	if r.touched == nil {
-		r.touched = map[string]bool{}
-	}
-	r.touched["Value"] = true
-	r.Value = nil
-}
-
-func (r RecipientVerification) MarshalJSON() ([]byte, error) {
-	data := make(map[string]any)
-
-	if r.touched["Type_"] && r.Type_ == nil {
-		data["type"] = nil
-	} else if r.Type_ != nil {
-		data["type"] = r.Type_
-	}
-
-	if r.touched["Value"] && r.Value == nil {
-		data["value"] = nil
-	} else if r.Value != nil {
-		data["value"] = r.Value
-	}
-
-	return json.Marshal(data)
 }
 
 func (r RecipientVerification) String() string {
