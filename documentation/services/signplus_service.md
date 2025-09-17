@@ -2,51 +2,56 @@
 
 A list of all methods in the `SignplusService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                             | Description                                        |
-| :------------------------------------------------------------------ | :------------------------------------------------- |
-| [CreateEnvelope](#createenvelope)                                   | Create new envelope                                |
-| [CreateEnvelopeFromTemplate](#createenvelopefromtemplate)           | Create new envelope from template                  |
-| [ListEnvelopes](#listenvelopes)                                     | List envelopes                                     |
-| [GetEnvelope](#getenvelope)                                         | Get envelope                                       |
-| [DeleteEnvelope](#deleteenvelope)                                   | Delete envelope                                    |
-| [DownloadEnvelopeSignedDocuments](#downloadenvelopesigneddocuments) | Download signed documents for an envelope          |
-| [DownloadEnvelopeCertificate](#downloadenvelopecertificate)         | Download certificate of completion for an envelope |
-| [GetEnvelopeDocument](#getenvelopedocument)                         | Get envelope document                              |
-| [GetEnvelopeDocuments](#getenvelopedocuments)                       | Get envelope documents                             |
-| [AddEnvelopeDocument](#addenvelopedocument)                         | Add envelope document                              |
-| [SetEnvelopeDynamicFields](#setenvelopedynamicfields)               | Set envelope dynamic fields                        |
-| [AddEnvelopeSigningSteps](#addenvelopesigningsteps)                 | Add envelope signing steps                         |
-| [SendEnvelope](#sendenvelope)                                       | Send envelope for signature                        |
-| [DuplicateEnvelope](#duplicateenvelope)                             | Duplicate envelope                                 |
-| [VoidEnvelope](#voidenvelope)                                       | Void envelope                                      |
-| [RenameEnvelope](#renameenvelope)                                   | Rename envelope                                    |
-| [SetEnvelopeComment](#setenvelopecomment)                           | Set envelope comment                               |
-| [SetEnvelopeNotification](#setenvelopenotification)                 | Set envelope notification                          |
-| [SetEnvelopeExpirationDate](#setenvelopeexpirationdate)             | Set envelope expiration date                       |
-| [SetEnvelopeLegalityLevel](#setenvelopelegalitylevel)               | Set envelope legality level                        |
-| [GetEnvelopeAnnotations](#getenvelopeannotations)                   | Get envelope annotations                           |
-| [GetEnvelopeDocumentAnnotations](#getenvelopedocumentannotations)   | Get envelope document annotations                  |
-| [AddEnvelopeAnnotation](#addenvelopeannotation)                     | Add envelope annotation                            |
-| [DeleteEnvelopeAnnotation](#deleteenvelopeannotation)               | Delete envelope annotation                         |
-| [CreateTemplate](#createtemplate)                                   | Create new template                                |
-| [ListTemplates](#listtemplates)                                     | List templates                                     |
-| [GetTemplate](#gettemplate)                                         | Get template                                       |
-| [DeleteTemplate](#deletetemplate)                                   | Delete template                                    |
-| [DuplicateTemplate](#duplicatetemplate)                             | Duplicate template                                 |
-| [AddTemplateDocument](#addtemplatedocument)                         | Add template document                              |
-| [GetTemplateDocument](#gettemplatedocument)                         | Get template document                              |
-| [GetTemplateDocuments](#gettemplatedocuments)                       | Get template documents                             |
-| [AddTemplateSigningSteps](#addtemplatesigningsteps)                 | Add template signing steps                         |
-| [RenameTemplate](#renametemplate)                                   | Rename template                                    |
-| [SetTemplateComment](#settemplatecomment)                           | Set template comment                               |
-| [SetTemplateNotification](#settemplatenotification)                 | Set template notification                          |
-| [GetTemplateAnnotations](#gettemplateannotations)                   | Get template annotations                           |
-| [GetDocumentTemplateAnnotations](#getdocumenttemplateannotations)   | Get document template annotations                  |
-| [AddTemplateAnnotation](#addtemplateannotation)                     | Add template annotation                            |
-| [DeleteTemplateAnnotation](#deletetemplateannotation)               | Delete template annotation                         |
-| [CreateWebhook](#createwebhook)                                     | Create webhook                                     |
-| [ListWebhooks](#listwebhooks)                                       | List webhooks                                      |
-| [DeleteWebhook](#deletewebhook)                                     | Delete webhook                                     |
+| Methods                                                                   | Description                                                     |
+| :------------------------------------------------------------------------ | :-------------------------------------------------------------- |
+| [CreateEnvelope](#createenvelope)                                         | Create new envelope                                             |
+| [CreateEnvelopeFromTemplate](#createenvelopefromtemplate)                 | Create new envelope from template                               |
+| [ListEnvelopes](#listenvelopes)                                           | List envelopes                                                  |
+| [GetEnvelope](#getenvelope)                                               | Get envelope                                                    |
+| [DeleteEnvelope](#deleteenvelope)                                         | Delete envelope                                                 |
+| [DownloadEnvelopeSignedDocuments](#downloadenvelopesigneddocuments)       | Download signed documents for an envelope                       |
+| [DownloadEnvelopeCertificate](#downloadenvelopecertificate)               | Download certificate of completion for an envelope              |
+| [GetEnvelopeDocument](#getenvelopedocument)                               | Get envelope document                                           |
+| [GetEnvelopeDocuments](#getenvelopedocuments)                             | Get envelope documents                                          |
+| [AddEnvelopeDocument](#addenvelopedocument)                               | Add envelope document                                           |
+| [SetEnvelopeDynamicFields](#setenvelopedynamicfields)                     | Set envelope dynamic fields                                     |
+| [AddEnvelopeSigningSteps](#addenvelopesigningsteps)                       | Add envelope signing steps                                      |
+| [SetEnvelopeAttachmentsSettings](#setenvelopeattachmentssettings)         | Set envelope attachment settings                                |
+| [SetEnvelopeAttachmentsPlaceholders](#setenvelopeattachmentsplaceholders) | Placeholders to be set, completely replacing the existing ones. |
+| [GetAttachmentFile](#getattachmentfile)                                   | Get envelope attachment file                                    |
+| [SendEnvelope](#sendenvelope)                                             | Send envelope for signature                                     |
+| [DuplicateEnvelope](#duplicateenvelope)                                   | Duplicate envelope                                              |
+| [VoidEnvelope](#voidenvelope)                                             | Void envelope                                                   |
+| [RenameEnvelope](#renameenvelope)                                         | Rename envelope                                                 |
+| [SetEnvelopeComment](#setenvelopecomment)                                 | Set envelope comment                                            |
+| [SetEnvelopeNotification](#setenvelopenotification)                       | Set envelope notification                                       |
+| [SetEnvelopeExpirationDate](#setenvelopeexpirationdate)                   | Set envelope expiration date                                    |
+| [SetEnvelopeLegalityLevel](#setenvelopelegalitylevel)                     | Set envelope legality level                                     |
+| [GetEnvelopeAnnotations](#getenvelopeannotations)                         | Get envelope annotations                                        |
+| [GetEnvelopeDocumentAnnotations](#getenvelopedocumentannotations)         | Get envelope document annotations                               |
+| [AddEnvelopeAnnotation](#addenvelopeannotation)                           | Add envelope annotation                                         |
+| [DeleteEnvelopeAnnotation](#deleteenvelopeannotation)                     | Delete envelope annotation                                      |
+| [CreateTemplate](#createtemplate)                                         | Create new template                                             |
+| [ListTemplates](#listtemplates)                                           | List templates                                                  |
+| [GetTemplate](#gettemplate)                                               | Get template                                                    |
+| [DeleteTemplate](#deletetemplate)                                         | Delete template                                                 |
+| [DuplicateTemplate](#duplicatetemplate)                                   | Duplicate template                                              |
+| [AddTemplateDocument](#addtemplatedocument)                               | Add template document                                           |
+| [GetTemplateDocument](#gettemplatedocument)                               | Get template document                                           |
+| [GetTemplateDocuments](#gettemplatedocuments)                             | Get template documents                                          |
+| [AddTemplateSigningSteps](#addtemplatesigningsteps)                       | Add template signing steps                                      |
+| [RenameTemplate](#renametemplate)                                         | Rename template                                                 |
+| [SetTemplateComment](#settemplatecomment)                                 | Set template comment                                            |
+| [SetTemplateNotification](#settemplatenotification)                       | Set template notification                                       |
+| [GetTemplateAnnotations](#gettemplateannotations)                         | Get template annotations                                        |
+| [GetDocumentTemplateAnnotations](#getdocumenttemplateannotations)         | Get document template annotations                               |
+| [AddTemplateAnnotation](#addtemplateannotation)                           | Add template annotation                                         |
+| [DeleteTemplateAnnotation](#deletetemplateannotation)                     | Delete template annotation                                      |
+| [SetTemplateAttachmentsSettings](#settemplateattachmentssettings)         | Set template attachment settings                                |
+| [SetTemplateAttachmentsPlaceholders](#settemplateattachmentsplaceholders) | Placeholders to be set, completely replacing the existing ones. |
+| [CreateWebhook](#createwebhook)                                           | Create webhook                                                  |
+| [ListWebhooks](#listwebhooks)                                             | List webhooks                                                   |
+| [DeleteWebhook](#deletewebhook)                                           | Delete webhook                                                  |
 
 ## CreateEnvelope
 
@@ -78,15 +83,16 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 envelopeLegalityLevel := signplus.ENVELOPE_LEGALITY_LEVEL_SES
 
 request := signplus.CreateEnvelopeRequest{
-  Name: util.ToPointer("Name"),
+  Name: util.ToPointer("name"),
   LegalityLevel: &envelopeLegalityLevel,
-  ExpiresAt: util.ToPointer(int64(123)),
-  Comment: util.ToPointer("Comment"),
+  ExpiresAt: util.ToPointer(int64(8)),
+  Comment: util.ToPointer("comment"),
   Sandbox: util.ToPointer(true),
 }
 
@@ -129,16 +135,17 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
 request := signplus.CreateEnvelopeFromTemplateRequest{
-  Name: util.ToPointer("Name"),
-  Comment: util.ToPointer("Comment"),
+  Name: util.ToPointer("name"),
+  Comment: util.ToPointer("comment"),
   Sandbox: util.ToPointer(true),
 }
 
-response, err := client.Signplus.CreateEnvelopeFromTemplate(context.Background(), "templateId", request)
+response, err := client.Signplus.CreateEnvelopeFromTemplate(context.Background(), "template_id", request)
 if err != nil {
   panic(err)
 }
@@ -176,6 +183,7 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 envelopeStatus := signplus.ENVELOPE_STATUS_DRAFT
@@ -183,20 +191,20 @@ envelopeStatus := signplus.ENVELOPE_STATUS_DRAFT
 envelopeOrderField := signplus.ENVELOPE_ORDER_FIELD_CREATION_DATE
 
 request := signplus.ListEnvelopesRequest{
-  Name: util.ToPointer("Name"),
+  Name: util.ToPointer("name"),
   Tags: []string{},
-  Comment: util.ToPointer("Comment"),
+  Comment: util.ToPointer("comment"),
   Ids: []string{},
   Statuses: []signplus.EnvelopeStatus{envelopeStatus},
   FolderIds: []string{},
   OnlyRootFolder: util.ToPointer(true),
-  DateFrom: util.ToPointer(int64(123)),
-  DateTo: util.ToPointer(int64(123)),
-  Uid: util.ToPointer("Uid"),
-  First: util.ToPointer(int64(123)),
-  Last: util.ToPointer(int64(123)),
-  After: util.ToPointer("After"),
-  Before: util.ToPointer("Before"),
+  DateFrom: util.ToPointer(int64(5)),
+  DateTo: util.ToPointer(int64(9)),
+  Uid: util.ToPointer("uid"),
+  First: util.ToPointer(int64(9)),
+  Last: util.ToPointer(int64(7)),
+  After: util.ToPointer("after"),
+  Before: util.ToPointer("before"),
   OrderField: &envelopeOrderField,
   Ascending: util.ToPointer(true),
   IncludeTrash: util.ToPointer(true),
@@ -240,9 +248,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.GetEnvelope(context.Background(), "envelopeId")
+response, err := client.Signplus.GetEnvelope(context.Background(), "envelope_id")
 if err != nil {
   panic(err)
 }
@@ -280,9 +289,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.DeleteEnvelope(context.Background(), "envelopeId")
+response, err := client.Signplus.DeleteEnvelope(context.Background(), "envelope_id")
 if err != nil {
   panic(err)
 }
@@ -321,6 +331,7 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
@@ -328,7 +339,7 @@ params := signplus.DownloadEnvelopeSignedDocumentsRequestParams{
 
 }
 
-response, err := client.Signplus.DownloadEnvelopeSignedDocuments(context.Background(), "envelopeId", params)
+response, err := client.Signplus.DownloadEnvelopeSignedDocuments(context.Background(), "envelope_id", params)
 if err != nil {
   panic(err)
 }
@@ -366,9 +377,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.DownloadEnvelopeCertificate(context.Background(), "envelopeId")
+response, err := client.Signplus.DownloadEnvelopeCertificate(context.Background(), "envelope_id")
 if err != nil {
   panic(err)
 }
@@ -407,9 +419,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.GetEnvelopeDocument(context.Background(), "envelopeId", "documentId")
+response, err := client.Signplus.GetEnvelopeDocument(context.Background(), "envelope_id", "document_id")
 if err != nil {
   panic(err)
 }
@@ -447,9 +460,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.GetEnvelopeDocuments(context.Background(), "envelopeId")
+response, err := client.Signplus.GetEnvelopeDocuments(context.Background(), "envelope_id")
 if err != nil {
   panic(err)
 }
@@ -488,6 +502,7 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
@@ -495,7 +510,7 @@ request := signplus.AddEnvelopeDocumentRequest{
   File: []byte{},
 }
 
-response, err := client.Signplus.AddEnvelopeDocument(context.Background(), "envelopeId", request)
+response, err := client.Signplus.AddEnvelopeDocument(context.Background(), "envelope_id", request)
 if err != nil {
   panic(err)
 }
@@ -534,19 +549,20 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
 dynamicField := signplus.DynamicField{
-  Name: util.ToPointer("Name"),
-  Value: util.ToPointer("Value"),
+  Name: util.ToPointer("name"),
+  Value: util.ToPointer("value"),
 }
 
 request := signplus.SetEnvelopeDynamicFieldsRequest{
   DynamicFields: []signplus.DynamicField{dynamicField},
 }
 
-response, err := client.Signplus.SetEnvelopeDynamicFields(context.Background(), "envelopeId", request)
+response, err := client.Signplus.SetEnvelopeDynamicFields(context.Background(), "envelope_id", request)
 if err != nil {
   panic(err)
 }
@@ -585,6 +601,7 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 recipientRole := signplus.RECIPIENT_ROLE_SIGNER
@@ -593,14 +610,14 @@ recipientVerificationType := signplus.RECIPIENT_VERIFICATION_TYPE_SMS
 
 recipientVerification := signplus.RecipientVerification{
   Type_: &recipientVerificationType,
-  Value: util.ToPointer("Value"),
+  Value: util.ToPointer("value"),
 }
 
 recipient := signplus.Recipient{
-  Id: util.ToPointer("Id"),
-  Uid: util.ToPointer("Uid"),
-  Name: util.ToPointer("Name"),
-  Email: util.ToPointer("Email"),
+  Id: util.ToPointer("id"),
+  Uid: util.ToPointer("uid"),
+  Name: util.ToPointer("name"),
+  Email: util.ToPointer("email"),
   Role: &recipientRole,
   Verification: &recipientVerification,
 }
@@ -613,7 +630,156 @@ request := signplus.AddEnvelopeSigningStepsRequest{
   SigningSteps: []signplus.SigningStep{signingStep},
 }
 
-response, err := client.Signplus.AddEnvelopeSigningSteps(context.Background(), "envelopeId", request)
+response, err := client.Signplus.AddEnvelopeSigningSteps(context.Background(), "envelope_id", request)
+if err != nil {
+  panic(err)
+}
+
+fmt.Println(response)
+```
+
+## SetEnvelopeAttachmentsSettings
+
+Set envelope attachment settings
+
+- HTTP Method: `PUT`
+- Endpoint: `/envelope/{envelope_id}/attachments/settings`
+
+**Parameters**
+
+| Name                                  | Type                                  | Required | Description                 |
+| :------------------------------------ | :------------------------------------ | :------- | :-------------------------- |
+| ctx                                   | Context                               | ✅       | Default go language context |
+| envelopeId                            | string                                | ✅       |                             |
+| setEnvelopeAttachmentsSettingsRequest | SetEnvelopeAttachmentsSettingsRequest | ✅       |                             |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```go
+import (
+  "fmt"
+  "encoding/json"
+  "github.com/alohihq/signplus-go/pkg/signplusconfig"
+  "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
+)
+
+config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
+client := signplus.NewSignplus(config)
+
+
+attachmentSettings := signplus.AttachmentSettings{
+  VisibleToRecipients: util.ToPointer(true),
+}
+
+request := signplus.SetEnvelopeAttachmentsSettingsRequest{
+  Settings: &attachmentSettings,
+}
+
+response, err := client.Signplus.SetEnvelopeAttachmentsSettings(context.Background(), "envelope_id", request)
+if err != nil {
+  panic(err)
+}
+
+fmt.Println(response)
+```
+
+## SetEnvelopeAttachmentsPlaceholders
+
+Placeholders to be set, completely replacing the existing ones.
+
+- HTTP Method: `PUT`
+- Endpoint: `/envelope/{envelope_id}/attachments/placeholders`
+
+**Parameters**
+
+| Name                                      | Type                                      | Required | Description                 |
+| :---------------------------------------- | :---------------------------------------- | :------- | :-------------------------- |
+| ctx                                       | Context                                   | ✅       | Default go language context |
+| envelopeId                                | string                                    | ✅       |                             |
+| setEnvelopeAttachmentsPlaceholdersRequest | SetEnvelopeAttachmentsPlaceholdersRequest | ✅       |                             |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```go
+import (
+  "fmt"
+  "encoding/json"
+  "github.com/alohihq/signplus-go/pkg/signplusconfig"
+  "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
+)
+
+config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
+client := signplus.NewSignplus(config)
+
+
+attachmentPlaceholderRequest := signplus.AttachmentPlaceholderRequest{
+  RecipientId: util.ToPointer("recipient_id"),
+  Id: util.ToPointer("id"),
+  Name: util.ToPointer("name"),
+  Hint: util.ToPointer("hint"),
+  Required: util.ToPointer(true),
+  Multiple: util.ToPointer(true),
+}
+
+request := signplus.SetEnvelopeAttachmentsPlaceholdersRequest{
+  Placeholders: []signplus.AttachmentPlaceholderRequest{attachmentPlaceholderRequest},
+}
+
+response, err := client.Signplus.SetEnvelopeAttachmentsPlaceholders(context.Background(), "envelope_id", request)
+if err != nil {
+  panic(err)
+}
+
+fmt.Println(response)
+```
+
+## GetAttachmentFile
+
+Get envelope attachment file
+
+- HTTP Method: `GET`
+- Endpoint: `/envelope/{envelope_id}/attachments/{file_id}`
+
+**Parameters**
+
+| Name       | Type    | Required | Description                 |
+| :--------- | :------ | :------- | :-------------------------- |
+| ctx        | Context | ✅       | Default go language context |
+| envelopeId | string  | ✅       |                             |
+| fileId     | string  | ✅       |                             |
+
+**Return Type**
+
+`[]byte`
+
+**Example Usage Code Snippet**
+
+```go
+import (
+  "fmt"
+  "encoding/json"
+  "github.com/alohihq/signplus-go/pkg/signplusconfig"
+  "github.com/alohihq/signplus-go/pkg/signplus"
+
+)
+
+config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
+client := signplus.NewSignplus(config)
+
+response, err := client.Signplus.GetAttachmentFile(context.Background(), "envelope_id", "file_id")
 if err != nil {
   panic(err)
 }
@@ -651,9 +817,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.SendEnvelope(context.Background(), "envelopeId")
+response, err := client.Signplus.SendEnvelope(context.Background(), "envelope_id")
 if err != nil {
   panic(err)
 }
@@ -691,9 +858,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.DuplicateEnvelope(context.Background(), "envelopeId")
+response, err := client.Signplus.DuplicateEnvelope(context.Background(), "envelope_id")
 if err != nil {
   panic(err)
 }
@@ -731,9 +899,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.VoidEnvelope(context.Background(), "envelopeId")
+response, err := client.Signplus.VoidEnvelope(context.Background(), "envelope_id")
 if err != nil {
   panic(err)
 }
@@ -772,14 +941,15 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
 request := signplus.RenameEnvelopeRequest{
-  Name: util.ToPointer("Name"),
+  Name: util.ToPointer("name"),
 }
 
-response, err := client.Signplus.RenameEnvelope(context.Background(), "envelopeId", request)
+response, err := client.Signplus.RenameEnvelope(context.Background(), "envelope_id", request)
 if err != nil {
   panic(err)
 }
@@ -818,14 +988,15 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
 request := signplus.SetEnvelopeCommentRequest{
-  Comment: util.ToPointer("Comment"),
+  Comment: util.ToPointer("comment"),
 }
 
-response, err := client.Signplus.SetEnvelopeComment(context.Background(), "envelopeId", request)
+response, err := client.Signplus.SetEnvelopeComment(context.Background(), "envelope_id", request)
 if err != nil {
   panic(err)
 }
@@ -864,16 +1035,17 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
 request := signplus.EnvelopeNotification{
-  Subject: util.ToPointer("Subject"),
-  Message: util.ToPointer("Message"),
-  ReminderInterval: util.ToPointer(int64(123)),
+  Subject: util.ToPointer("subject"),
+  Message: util.ToPointer("message"),
+  ReminderInterval: util.ToPointer(int64(1)),
 }
 
-response, err := client.Signplus.SetEnvelopeNotification(context.Background(), "envelopeId", request)
+response, err := client.Signplus.SetEnvelopeNotification(context.Background(), "envelope_id", request)
 if err != nil {
   panic(err)
 }
@@ -912,14 +1084,15 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
 request := signplus.SetEnvelopeExpirationRequest{
-  ExpiresAt: util.ToPointer(int64(123)),
+  ExpiresAt: util.ToPointer(int64(0)),
 }
 
-response, err := client.Signplus.SetEnvelopeExpirationDate(context.Background(), "envelopeId", request)
+response, err := client.Signplus.SetEnvelopeExpirationDate(context.Background(), "envelope_id", request)
 if err != nil {
   panic(err)
 }
@@ -958,6 +1131,7 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 envelopeLegalityLevel := signplus.ENVELOPE_LEGALITY_LEVEL_SES
@@ -966,7 +1140,7 @@ request := signplus.SetEnvelopeLegalityLevelRequest{
   LegalityLevel: &envelopeLegalityLevel,
 }
 
-response, err := client.Signplus.SetEnvelopeLegalityLevel(context.Background(), "envelopeId", request)
+response, err := client.Signplus.SetEnvelopeLegalityLevel(context.Background(), "envelope_id", request)
 if err != nil {
   panic(err)
 }
@@ -1004,9 +1178,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.GetEnvelopeAnnotations(context.Background(), "envelopeId")
+response, err := client.Signplus.GetEnvelopeAnnotations(context.Background(), "envelope_id")
 if err != nil {
   panic(err)
 }
@@ -1045,9 +1220,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.GetEnvelopeDocumentAnnotations(context.Background(), "envelopeId", "documentId")
+response, err := client.Signplus.GetEnvelopeDocumentAnnotations(context.Background(), "envelope_id", "document_id")
 if err != nil {
   panic(err)
 }
@@ -1086,18 +1262,19 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 annotationType := signplus.ANNOTATION_TYPE_TEXT
 
 
 annotationSignature := signplus.AnnotationSignature{
-  Id: util.ToPointer("Id"),
+  Id: util.ToPointer("id"),
 }
 
 
 annotationInitials := signplus.AnnotationInitials{
-  Id: util.ToPointer("Id"),
+  Id: util.ToPointer("id"),
 }
 
 annotationFontFamily := signplus.ANNOTATION_FONT_FAMILY_UNKNOWN
@@ -1109,11 +1286,11 @@ annotationFont := signplus.AnnotationFont{
 }
 
 annotationText := signplus.AnnotationText{
-  Size: util.ToPointer(float64(123)),
-  Color: util.ToPointer(float64(123)),
-  Value: util.ToPointer("Value"),
-  Tooltip: util.ToPointer("Tooltip"),
-  DynamicFieldName: util.ToPointer("DynamicFieldName"),
+  Size: util.ToPointer(float64(5.96)),
+  Color: util.ToPointer(float64(8.73)),
+  Value: util.ToPointer("value"),
+  Tooltip: util.ToPointer("tooltip"),
+  DynamicFieldName: util.ToPointer("dynamic_field_name"),
   Font: &annotationFont,
 }
 
@@ -1128,12 +1305,12 @@ annotationFont := signplus.AnnotationFont{
 annotationDateTimeFormat := signplus.ANNOTATION_DATE_TIME_FORMAT_DMY_NUMERIC_SLASH
 
 annotationDateTime := signplus.AnnotationDateTime{
-  Size: util.ToPointer(float64(123)),
+  Size: util.ToPointer(float64(0.26)),
   Font: &annotationFont,
-  Color: util.ToPointer("Color"),
+  Color: util.ToPointer("color"),
   AutoFill: util.ToPointer(true),
-  Timezone: util.ToPointer("Timezone"),
-  Timestamp: util.ToPointer(int64(123)),
+  Timezone: util.ToPointer("timezone"),
+  Timestamp: util.ToPointer(int64(1)),
   Format: &annotationDateTimeFormat,
 }
 
@@ -1145,13 +1322,13 @@ annotationCheckbox := signplus.AnnotationCheckbox{
 }
 
 request := signplus.AddAnnotationRequest{
-  RecipientId: util.ToPointer("RecipientId"),
-  DocumentId: util.ToPointer("DocumentId"),
-  Page: util.ToPointer(int64(123)),
-  X: util.ToPointer(float64(123)),
-  Y: util.ToPointer(float64(123)),
-  Width: util.ToPointer(float64(123)),
-  Height: util.ToPointer(float64(123)),
+  RecipientId: util.ToPointer("recipient_id"),
+  DocumentId: util.ToPointer("document_id"),
+  Page: util.ToPointer(int64(2)),
+  X: util.ToPointer(float64(1.99)),
+  Y: util.ToPointer(float64(8.2)),
+  Width: util.ToPointer(float64(4.89)),
+  Height: util.ToPointer(float64(9.43)),
   Required: util.ToPointer(true),
   Type_: &annotationType,
   Signature: &annotationSignature,
@@ -1161,7 +1338,7 @@ request := signplus.AddAnnotationRequest{
   Checkbox: &annotationCheckbox,
 }
 
-response, err := client.Signplus.AddEnvelopeAnnotation(context.Background(), "envelopeId", request)
+response, err := client.Signplus.AddEnvelopeAnnotation(context.Background(), "envelope_id", request)
 if err != nil {
   panic(err)
 }
@@ -1200,9 +1377,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.DeleteEnvelopeAnnotation(context.Background(), "envelopeId", "annotationId")
+response, err := client.Signplus.DeleteEnvelopeAnnotation(context.Background(), "envelope_id", "annotation_id")
 if err != nil {
   panic(err)
 }
@@ -1240,11 +1418,12 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
 request := signplus.CreateTemplateRequest{
-  Name: util.ToPointer("Name"),
+  Name: util.ToPointer("name"),
 }
 
 response, err := client.Signplus.CreateTemplate(context.Background(), request)
@@ -1285,18 +1464,19 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 templateOrderField := signplus.TEMPLATE_ORDER_FIELD_TEMPLATE_ID
 
 request := signplus.ListTemplatesRequest{
-  Name: util.ToPointer("Name"),
+  Name: util.ToPointer("name"),
   Tags: []string{},
   Ids: []string{},
-  First: util.ToPointer(int64(123)),
-  Last: util.ToPointer(int64(123)),
-  After: util.ToPointer("After"),
-  Before: util.ToPointer("Before"),
+  First: util.ToPointer(int64(1)),
+  Last: util.ToPointer(int64(6)),
+  After: util.ToPointer("after"),
+  Before: util.ToPointer("before"),
   OrderField: &templateOrderField,
   Ascending: util.ToPointer(true),
 }
@@ -1339,9 +1519,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.GetTemplate(context.Background(), "templateId")
+response, err := client.Signplus.GetTemplate(context.Background(), "template_id")
 if err != nil {
   panic(err)
 }
@@ -1379,9 +1560,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.DeleteTemplate(context.Background(), "templateId")
+response, err := client.Signplus.DeleteTemplate(context.Background(), "template_id")
 if err != nil {
   panic(err)
 }
@@ -1419,9 +1601,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.DuplicateTemplate(context.Background(), "templateId")
+response, err := client.Signplus.DuplicateTemplate(context.Background(), "template_id")
 if err != nil {
   panic(err)
 }
@@ -1460,6 +1643,7 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
@@ -1467,7 +1651,7 @@ request := signplus.AddTemplateDocumentRequest{
   File: []byte{},
 }
 
-response, err := client.Signplus.AddTemplateDocument(context.Background(), "templateId", request)
+response, err := client.Signplus.AddTemplateDocument(context.Background(), "template_id", request)
 if err != nil {
   panic(err)
 }
@@ -1506,9 +1690,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.GetTemplateDocument(context.Background(), "templateId", "documentId")
+response, err := client.Signplus.GetTemplateDocument(context.Background(), "template_id", "document_id")
 if err != nil {
   panic(err)
 }
@@ -1546,9 +1731,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.GetTemplateDocuments(context.Background(), "templateId")
+response, err := client.Signplus.GetTemplateDocuments(context.Background(), "template_id")
 if err != nil {
   panic(err)
 }
@@ -1587,15 +1773,16 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 templateRecipientRole := signplus.TEMPLATE_RECIPIENT_ROLE_SIGNER
 
 templateRecipient := signplus.TemplateRecipient{
-  Id: util.ToPointer("Id"),
-  Uid: util.ToPointer("Uid"),
-  Name: util.ToPointer("Name"),
-  Email: util.ToPointer("Email"),
+  Id: util.ToPointer("id"),
+  Uid: util.ToPointer("uid"),
+  Name: util.ToPointer("name"),
+  Email: util.ToPointer("email"),
   Role: &templateRecipientRole,
 }
 
@@ -1607,7 +1794,7 @@ request := signplus.AddTemplateSigningStepsRequest{
   SigningSteps: []signplus.TemplateSigningStep{templateSigningStep},
 }
 
-response, err := client.Signplus.AddTemplateSigningSteps(context.Background(), "templateId", request)
+response, err := client.Signplus.AddTemplateSigningSteps(context.Background(), "template_id", request)
 if err != nil {
   panic(err)
 }
@@ -1646,14 +1833,15 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
 request := signplus.RenameTemplateRequest{
-  Name: util.ToPointer("Name"),
+  Name: util.ToPointer("name"),
 }
 
-response, err := client.Signplus.RenameTemplate(context.Background(), "templateId", request)
+response, err := client.Signplus.RenameTemplate(context.Background(), "template_id", request)
 if err != nil {
   panic(err)
 }
@@ -1692,14 +1880,15 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
 request := signplus.SetTemplateCommentRequest{
-  Comment: util.ToPointer("Comment"),
+  Comment: util.ToPointer("comment"),
 }
 
-response, err := client.Signplus.SetTemplateComment(context.Background(), "templateId", request)
+response, err := client.Signplus.SetTemplateComment(context.Background(), "template_id", request)
 if err != nil {
   panic(err)
 }
@@ -1738,16 +1927,17 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 
 request := signplus.EnvelopeNotification{
-  Subject: util.ToPointer("Subject"),
-  Message: util.ToPointer("Message"),
-  ReminderInterval: util.ToPointer(int64(123)),
+  Subject: util.ToPointer("subject"),
+  Message: util.ToPointer("message"),
+  ReminderInterval: util.ToPointer(int64(1)),
 }
 
-response, err := client.Signplus.SetTemplateNotification(context.Background(), "templateId", request)
+response, err := client.Signplus.SetTemplateNotification(context.Background(), "template_id", request)
 if err != nil {
   panic(err)
 }
@@ -1785,9 +1975,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.GetTemplateAnnotations(context.Background(), "templateId")
+response, err := client.Signplus.GetTemplateAnnotations(context.Background(), "template_id")
 if err != nil {
   panic(err)
 }
@@ -1826,9 +2017,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.GetDocumentTemplateAnnotations(context.Background(), "templateId", "documentId")
+response, err := client.Signplus.GetDocumentTemplateAnnotations(context.Background(), "template_id", "document_id")
 if err != nil {
   panic(err)
 }
@@ -1867,18 +2059,19 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 annotationType := signplus.ANNOTATION_TYPE_TEXT
 
 
 annotationSignature := signplus.AnnotationSignature{
-  Id: util.ToPointer("Id"),
+  Id: util.ToPointer("id"),
 }
 
 
 annotationInitials := signplus.AnnotationInitials{
-  Id: util.ToPointer("Id"),
+  Id: util.ToPointer("id"),
 }
 
 annotationFontFamily := signplus.ANNOTATION_FONT_FAMILY_UNKNOWN
@@ -1890,11 +2083,11 @@ annotationFont := signplus.AnnotationFont{
 }
 
 annotationText := signplus.AnnotationText{
-  Size: util.ToPointer(float64(123)),
-  Color: util.ToPointer(float64(123)),
-  Value: util.ToPointer("Value"),
-  Tooltip: util.ToPointer("Tooltip"),
-  DynamicFieldName: util.ToPointer("DynamicFieldName"),
+  Size: util.ToPointer(float64(5.96)),
+  Color: util.ToPointer(float64(8.73)),
+  Value: util.ToPointer("value"),
+  Tooltip: util.ToPointer("tooltip"),
+  DynamicFieldName: util.ToPointer("dynamic_field_name"),
   Font: &annotationFont,
 }
 
@@ -1909,12 +2102,12 @@ annotationFont := signplus.AnnotationFont{
 annotationDateTimeFormat := signplus.ANNOTATION_DATE_TIME_FORMAT_DMY_NUMERIC_SLASH
 
 annotationDateTime := signplus.AnnotationDateTime{
-  Size: util.ToPointer(float64(123)),
+  Size: util.ToPointer(float64(0.26)),
   Font: &annotationFont,
-  Color: util.ToPointer("Color"),
+  Color: util.ToPointer("color"),
   AutoFill: util.ToPointer(true),
-  Timezone: util.ToPointer("Timezone"),
-  Timestamp: util.ToPointer(int64(123)),
+  Timezone: util.ToPointer("timezone"),
+  Timestamp: util.ToPointer(int64(1)),
   Format: &annotationDateTimeFormat,
 }
 
@@ -1926,13 +2119,13 @@ annotationCheckbox := signplus.AnnotationCheckbox{
 }
 
 request := signplus.AddAnnotationRequest{
-  RecipientId: util.ToPointer("RecipientId"),
-  DocumentId: util.ToPointer("DocumentId"),
-  Page: util.ToPointer(int64(123)),
-  X: util.ToPointer(float64(123)),
-  Y: util.ToPointer(float64(123)),
-  Width: util.ToPointer(float64(123)),
-  Height: util.ToPointer(float64(123)),
+  RecipientId: util.ToPointer("recipient_id"),
+  DocumentId: util.ToPointer("document_id"),
+  Page: util.ToPointer(int64(2)),
+  X: util.ToPointer(float64(1.99)),
+  Y: util.ToPointer(float64(8.2)),
+  Width: util.ToPointer(float64(4.89)),
+  Height: util.ToPointer(float64(9.43)),
   Required: util.ToPointer(true),
   Type_: &annotationType,
   Signature: &annotationSignature,
@@ -1942,7 +2135,7 @@ request := signplus.AddAnnotationRequest{
   Checkbox: &annotationCheckbox,
 }
 
-response, err := client.Signplus.AddTemplateAnnotation(context.Background(), "templateId", request)
+response, err := client.Signplus.AddTemplateAnnotation(context.Background(), "template_id", request)
 if err != nil {
   panic(err)
 }
@@ -1981,9 +2174,117 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.DeleteTemplateAnnotation(context.Background(), "templateId", "annotationId")
+response, err := client.Signplus.DeleteTemplateAnnotation(context.Background(), "template_id", "annotation_id")
+if err != nil {
+  panic(err)
+}
+
+fmt.Println(response)
+```
+
+## SetTemplateAttachmentsSettings
+
+Set template attachment settings
+
+- HTTP Method: `PUT`
+- Endpoint: `/template/{template_id}/attachments/settings`
+
+**Parameters**
+
+| Name                                  | Type                                  | Required | Description                 |
+| :------------------------------------ | :------------------------------------ | :------- | :-------------------------- |
+| ctx                                   | Context                               | ✅       | Default go language context |
+| templateId                            | string                                | ✅       |                             |
+| setEnvelopeAttachmentsSettingsRequest | SetEnvelopeAttachmentsSettingsRequest | ✅       |                             |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```go
+import (
+  "fmt"
+  "encoding/json"
+  "github.com/alohihq/signplus-go/pkg/signplusconfig"
+  "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
+)
+
+config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
+client := signplus.NewSignplus(config)
+
+
+attachmentSettings := signplus.AttachmentSettings{
+  VisibleToRecipients: util.ToPointer(true),
+}
+
+request := signplus.SetEnvelopeAttachmentsSettingsRequest{
+  Settings: &attachmentSettings,
+}
+
+response, err := client.Signplus.SetTemplateAttachmentsSettings(context.Background(), "template_id", request)
+if err != nil {
+  panic(err)
+}
+
+fmt.Println(response)
+```
+
+## SetTemplateAttachmentsPlaceholders
+
+Placeholders to be set, completely replacing the existing ones.
+
+- HTTP Method: `PUT`
+- Endpoint: `/template/{template_id}/attachments/placeholders`
+
+**Parameters**
+
+| Name                                      | Type                                      | Required | Description                 |
+| :---------------------------------------- | :---------------------------------------- | :------- | :-------------------------- |
+| ctx                                       | Context                                   | ✅       | Default go language context |
+| templateId                                | string                                    | ✅       |                             |
+| setEnvelopeAttachmentsPlaceholdersRequest | SetEnvelopeAttachmentsPlaceholdersRequest | ✅       |                             |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```go
+import (
+  "fmt"
+  "encoding/json"
+  "github.com/alohihq/signplus-go/pkg/signplusconfig"
+  "github.com/alohihq/signplus-go/pkg/signplus"
+  "github.com/alohihq/signplus-go/pkg/util"
+)
+
+config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
+client := signplus.NewSignplus(config)
+
+
+attachmentPlaceholderRequest := signplus.AttachmentPlaceholderRequest{
+  RecipientId: util.ToPointer("recipient_id"),
+  Id: util.ToPointer("id"),
+  Name: util.ToPointer("name"),
+  Hint: util.ToPointer("hint"),
+  Required: util.ToPointer(true),
+  Multiple: util.ToPointer(true),
+}
+
+request := signplus.SetEnvelopeAttachmentsPlaceholdersRequest{
+  Placeholders: []signplus.AttachmentPlaceholderRequest{attachmentPlaceholderRequest},
+}
+
+response, err := client.Signplus.SetTemplateAttachmentsPlaceholders(context.Background(), "template_id", request)
 if err != nil {
   panic(err)
 }
@@ -2021,13 +2322,14 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 webhookEvent := signplus.WEBHOOK_EVENT_ENVELOPE_EXPIRED
 
 request := signplus.CreateWebhookRequest{
   Event: &webhookEvent,
-  Target: util.ToPointer("Target"),
+  Target: util.ToPointer("target"),
 }
 
 response, err := client.Signplus.CreateWebhook(context.Background(), request)
@@ -2068,12 +2370,13 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
 webhookEvent := signplus.WEBHOOK_EVENT_ENVELOPE_EXPIRED
 
 request := signplus.ListWebhooksRequest{
-  WebhookId: util.ToPointer("WebhookId"),
+  WebhookId: util.ToPointer("webhook_id"),
   Event: &webhookEvent,
 }
 
@@ -2115,9 +2418,10 @@ import (
 )
 
 config := signplusconfig.NewConfig()
+config.SetAccessToken("ACCESS_TOKEN")
 client := signplus.NewSignplus(config)
 
-response, err := client.Signplus.DeleteWebhook(context.Background(), "webhookId")
+response, err := client.Signplus.DeleteWebhook(context.Background(), "webhook_id")
 if err != nil {
   panic(err)
 }

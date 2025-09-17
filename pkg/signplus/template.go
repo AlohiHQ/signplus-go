@@ -25,7 +25,8 @@ type Template struct {
 	Documents     []Document            `json:"documents,omitempty"`
 	Notification  *EnvelopeNotification `json:"notification,omitempty"`
 	// List of dynamic fields
-	DynamicFields []string `json:"dynamic_fields,omitempty"`
+	DynamicFields []string             `json:"dynamic_fields,omitempty"`
+	Attachments   *EnvelopeAttachments `json:"attachments,omitempty"`
 }
 
 func (t *Template) GetId() *string {
@@ -169,6 +170,17 @@ func (t *Template) GetDynamicFields() []string {
 
 func (t *Template) SetDynamicFields(dynamicFields []string) {
 	t.DynamicFields = dynamicFields
+}
+
+func (t *Template) GetAttachments() *EnvelopeAttachments {
+	if t == nil {
+		return nil
+	}
+	return t.Attachments
+}
+
+func (t *Template) SetAttachments(attachments EnvelopeAttachments) {
+	t.Attachments = &attachments
 }
 
 func (t Template) String() string {
