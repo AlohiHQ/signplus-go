@@ -17,3 +17,4 @@
 | Documents       | []signplus.Document            | ❌       |                                                                                                                                                                         |
 | Notification    | signplus.EnvelopeNotification  | ❌       |                                                                                                                                                                         |
 | DynamicFields   | []string                       | ❌       | List of dynamic fields                                                                                                                                                  |
+| Attachments     | signplus.EnvelopeAttachments   | ❌       |                                                                                                                                                                         |

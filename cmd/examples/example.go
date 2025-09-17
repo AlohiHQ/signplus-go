@@ -21,10 +21,10 @@ func main() {
 	envelopeLegalityLevel := signplus.ENVELOPE_LEGALITY_LEVEL_SES
 
 	request := signplus.CreateEnvelopeRequest{
-		Name:          util.ToPointer("Name"),
+		Name:          util.ToPointer("name"),
 		LegalityLevel: &envelopeLegalityLevel,
-		ExpiresAt:     util.ToPointer(int64(123)),
-		Comment:       util.ToPointer("Comment"),
+		ExpiresAt:     util.ToPointer(int64(8)),
+		Comment:       util.ToPointer("comment"),
 		Sandbox:       util.ToPointer(true),
 	}
 

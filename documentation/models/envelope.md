@@ -19,3 +19,4 @@
 | SigningSteps  | []signplus.SigningStep         | ❌       |                                                                                                                                                                         |
 | Documents     | []signplus.Document            | ❌       |                                                                                                                                                                         |
 | Notification  | signplus.EnvelopeNotification  | ❌       |                                                                                                                                                                         |
+| Attachments   | signplus.EnvelopeAttachments   | ❌       |                                                                                                                                                                         |

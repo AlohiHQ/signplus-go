@@ -1,11 +1,11 @@
 {
-  "liblabVersion": "2.25.35",
-  "date": "2025-07-14T14:19:40.072Z",
+  "liblabVersion": "2.25.46",
+  "date": "2025-09-17T12:01:31.116Z",
   "config": {
     "language": "go",
-    "apiId": 2479,
+    "apiId": 2744,
     "sdkName": "signplus",
-    "sdkVersion": "1.3.0",
+    "sdkVersion": "1.4.0",
     "languages": ["go"],
     "auth": ["bearer"],
     "docs": [],
@@ -13,7 +13,7 @@
     "deliveryMethods": ["zip"],
     "rawConfig": {
       "sdkName": "signplus",
-      "apiVersion": "2.3.1",
+      "apiVersion": "2.5.0",
       "apiName": "signplus-api",
       "specFilePath": "openapi.yaml",
       "languages": ["csharp", "go", "python", "typescript", "java", "php"],
@@ -45,7 +45,7 @@
           "pypiPackageName": "signplus-python",
           "githubRepoName": "signplus-python",
           "ignoreFiles": [],
-          "sdkVersion": "1.3.0",
+          "sdkVersion": "1.4.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -53,7 +53,7 @@
           "githubRepoName": "signplus-java",
           "groupId": "com.alohi",
           "artifactId": "signplus",
-          "sdkVersion": "2.3.0",
+          "sdkVersion": "2.4.0",
           "liblabVersion": "2",
           "developers": [
             {
@@ -73,7 +73,7 @@
           "npmOrg": "alohi",
           "githubRepoName": "signplus-typescript",
           "ignoreFiles": [],
-          "sdkVersion": "2.3.0",
+          "sdkVersion": "2.4.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -81,7 +81,7 @@
           "goModuleName": "github.com/alohihq/signplus-go",
           "githubRepoName": "signplus-go",
           "ignoreFiles": [],
-          "sdkVersion": "1.3.0",
+          "sdkVersion": "1.4.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -89,7 +89,7 @@
           "packageName": "alohi/signplus",
           "githubRepoName": "signplus-php",
           "ignoreFiles": [],
-          "sdkVersion": "2.3.0",
+          "sdkVersion": "2.4.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -97,7 +97,7 @@
           "packageId": "Alohi.Signplus",
           "githubRepoName": "signplus-sharp",
           "ignoreFiles": [],
-          "sdkVersion": "1.3.0",
+          "sdkVersion": "1.4.0",
           "liblabVersion": "2"
         }
       },
@@ -106,7 +106,7 @@
       }
     },
     "liblabConfigVersion": "1.0.0",
-    "apiVersion": "2.3.1",
+    "apiVersion": "2.5.0",
     "apiName": "signplus-api",
     "specFilePath": "openapi.yaml",
     "createDocs": false,
@@ -116,7 +116,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "1.3.0",
+        "sdkVersion": "1.4.0",
         "packageId": "Alohi.Signplus"
       },
       "go": {
@@ -124,7 +124,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "1.3.0",
+        "sdkVersion": "1.4.0",
         "goModuleName": "github.com/alohihq/signplus-go",
         "additionalConstructorParameters": []
       },
@@ -133,7 +133,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "2.3.0",
+        "sdkVersion": "2.4.0",
         "groupId": "com.alohi",
         "artifactId": "signplus",
         "includeKotlinSnippets": false,
@@ -152,7 +152,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "1.3.0",
+        "sdkVersion": "1.4.0",
         "alwaysInitializeOptionals": false,
         "additionalConstructorParameters": [],
         "pypiPackageName": "signplus-python"
@@ -162,7 +162,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "2.3.0",
+        "sdkVersion": "2.4.0",
         "additionalConstructorParameters": [],
         "packageName": "alohi/signplus"
       },
@@ -171,7 +171,7 @@
         "ignoreFiles": [],
         "liblabVersion": "2",
         "renameIllegalModelProperties": true,
-        "sdkVersion": "2.3.0",
+        "sdkVersion": "2.4.0",
         "additionalConstructorParameters": [],
         "bundle": false,
         "denoteCommon": false,
@@ -246,7 +246,10 @@
       "queriesData": []
     },
     "ai": false,
-    "specType": "openapi"
+    "specType": "openapi",
+    "deprecatedOperations": {
+      "include": true
+    }
   },
   "files": [
     "internal/validation/validate_array_length.go",
@@ -300,6 +303,9 @@
     "documentation/models/add_envelope_document_request.md",
     "documentation/models/set_envelope_dynamic_fields_request.md",
     "documentation/models/add_envelope_signing_steps_request.md",
+    "documentation/models/set_envelope_attachments_settings_request.md",
+    "documentation/models/envelope_attachments.md",
+    "documentation/models/set_envelope_attachments_placeholders_request.md",
     "documentation/models/rename_envelope_request.md",
     "documentation/models/set_envelope_comment_request.md",
     "documentation/models/envelope_notification.md",
@@ -332,8 +338,13 @@
     "documentation/models/recipient_verification.md",
     "documentation/models/recipient_verification_type.md",
     "documentation/models/page.md",
+    "documentation/models/attachment_settings.md",
+    "documentation/models/attachment_placeholders_per_recipient.md",
+    "documentation/models/attachment_placeholder.md",
+    "documentation/models/attachment_placeholder_file.md",
     "documentation/models/envelope_order_field.md",
     "documentation/models/dynamic_field.md",
+    "documentation/models/attachment_placeholder_request.md",
     "documentation/models/annotation_type.md",
     "documentation/models/annotation_signature.md",
     "documentation/models/annotation_initials.md",
@@ -376,6 +387,9 @@
     "pkg/signplus/add_envelope_document_request.go",
     "pkg/signplus/set_envelope_dynamic_fields_request.go",
     "pkg/signplus/add_envelope_signing_steps_request.go",
+    "pkg/signplus/set_envelope_attachments_settings_request.go",
+    "pkg/signplus/envelope_attachments.go",
+    "pkg/signplus/set_envelope_attachments_placeholders_request.go",
     "pkg/signplus/rename_envelope_request.go",
     "pkg/signplus/set_envelope_comment_request.go",
     "pkg/signplus/envelope_notification.go",
@@ -408,8 +422,13 @@
     "pkg/signplus/recipient_verification.go",
     "pkg/signplus/recipient_verification_type.go",
     "pkg/signplus/page.go",
+    "pkg/signplus/attachment_settings.go",
+    "pkg/signplus/attachment_placeholders_per_recipient.go",
+    "pkg/signplus/attachment_placeholder.go",
+    "pkg/signplus/attachment_placeholder_file.go",
     "pkg/signplus/envelope_order_field.go",
     "pkg/signplus/dynamic_field.go",
+    "pkg/signplus/attachment_placeholder_request.go",
     "pkg/signplus/annotation_type.go",
     "pkg/signplus/annotation_signature.go",
     "pkg/signplus/annotation_initials.go",

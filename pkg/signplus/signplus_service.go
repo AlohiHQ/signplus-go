@@ -319,6 +319,77 @@ func (api *SignplusService) AddEnvelopeSigningSteps(ctx context.Context, envelop
 	return shared.NewSignplusResponse[Envelope](resp), nil
 }
 
+// Set envelope attachment settings
+func (api *SignplusService) SetEnvelopeAttachmentsSettings(ctx context.Context, envelopeId string, setEnvelopeAttachmentsSettingsRequest SetEnvelopeAttachmentsSettingsRequest) (*shared.SignplusResponse[EnvelopeAttachments], *shared.SignplusError) {
+	config := *api.getConfig()
+
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/envelope/{envelope_id}/attachments/settings").
+		WithConfig(config).
+		WithBody(setEnvelopeAttachmentsSettingsRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
+	client := restClient.NewRestClient[EnvelopeAttachments](config)
+	resp, err := client.Call(*request)
+	if err != nil {
+		return nil, shared.NewSignplusError[EnvelopeAttachments](err)
+	}
+
+	return shared.NewSignplusResponse[EnvelopeAttachments](resp), nil
+}
+
+// Placeholders to be set, completely replacing the existing ones.
+func (api *SignplusService) SetEnvelopeAttachmentsPlaceholders(ctx context.Context, envelopeId string, setEnvelopeAttachmentsPlaceholdersRequest SetEnvelopeAttachmentsPlaceholdersRequest) (*shared.SignplusResponse[EnvelopeAttachments], *shared.SignplusError) {
+	config := *api.getConfig()
+
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/envelope/{envelope_id}/attachments/placeholders").
+		WithConfig(config).
+		WithBody(setEnvelopeAttachmentsPlaceholdersRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("envelope_id", envelopeId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
+	client := restClient.NewRestClient[EnvelopeAttachments](config)
+	resp, err := client.Call(*request)
+	if err != nil {
+		return nil, shared.NewSignplusError[EnvelopeAttachments](err)
+	}
+
+	return shared.NewSignplusResponse[EnvelopeAttachments](resp), nil
+}
+
+// Get envelope attachment file
+func (api *SignplusService) GetAttachmentFile(ctx context.Context, envelopeId string, fileId string) (*shared.SignplusResponse[[]byte], *shared.SignplusError) {
+	config := *api.getConfig()
+
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/envelope/{envelope_id}/attachments/{file_id}").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeId).
+		AddPathParam("file_id", fileId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeBinary).
+		Build()
+
+	client := restClient.NewRestClient[[]byte](config)
+	resp, err := client.Call(*request)
+	if err != nil {
+		return nil, shared.NewSignplusError[[]byte](err)
+	}
+
+	return shared.NewSignplusResponse[[]byte](resp), nil
+}
+
 // Send envelope for signature
 func (api *SignplusService) SendEnvelope(ctx context.Context, envelopeId string) (*shared.SignplusResponse[Envelope], *shared.SignplusError) {
 	config := *api.getConfig()
@@ -963,6 +1034,54 @@ func (api *SignplusService) DeleteTemplateAnnotation(ctx context.Context, templa
 	}
 
 	return shared.NewSignplusResponse[any](resp), nil
+}
+
+// Set template attachment settings
+func (api *SignplusService) SetTemplateAttachmentsSettings(ctx context.Context, templateId string, setEnvelopeAttachmentsSettingsRequest SetEnvelopeAttachmentsSettingsRequest) (*shared.SignplusResponse[EnvelopeAttachments], *shared.SignplusError) {
+	config := *api.getConfig()
+
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/template/{template_id}/attachments/settings").
+		WithConfig(config).
+		WithBody(setEnvelopeAttachmentsSettingsRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
+	client := restClient.NewRestClient[EnvelopeAttachments](config)
+	resp, err := client.Call(*request)
+	if err != nil {
+		return nil, shared.NewSignplusError[EnvelopeAttachments](err)
+	}
+
+	return shared.NewSignplusResponse[EnvelopeAttachments](resp), nil
+}
+
+// Placeholders to be set, completely replacing the existing ones.
+func (api *SignplusService) SetTemplateAttachmentsPlaceholders(ctx context.Context, templateId string, setEnvelopeAttachmentsPlaceholdersRequest SetEnvelopeAttachmentsPlaceholdersRequest) (*shared.SignplusResponse[EnvelopeAttachments], *shared.SignplusError) {
+	config := *api.getConfig()
+
+	request := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("PUT").
+		WithPath("/template/{template_id}/attachments/placeholders").
+		WithConfig(config).
+		WithBody(setEnvelopeAttachmentsPlaceholdersRequest).
+		AddHeader("CONTENT-TYPE", "application/json").
+		AddPathParam("template_id", templateId).
+		WithContentType(httptransport.ContentTypeJson).
+		WithResponseContentType(httptransport.ContentTypeJson).
+		Build()
+
+	client := restClient.NewRestClient[EnvelopeAttachments](config)
+	resp, err := client.Call(*request)
+	if err != nil {
+		return nil, shared.NewSignplusError[EnvelopeAttachments](err)
+	}
+
+	return shared.NewSignplusResponse[EnvelopeAttachments](resp), nil
 }
 
 // Create webhook

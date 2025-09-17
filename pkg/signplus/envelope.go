@@ -30,6 +30,7 @@ type Envelope struct {
 	SigningSteps []SigningStep         `json:"signing_steps,omitempty"`
 	Documents    []Document            `json:"documents,omitempty"`
 	Notification *EnvelopeNotification `json:"notification,omitempty"`
+	Attachments  *EnvelopeAttachments  `json:"attachments,omitempty"`
 }
 
 func (e *Envelope) GetId() *string {
@@ -195,6 +196,17 @@ func (e *Envelope) GetNotification() *EnvelopeNotification {
 
 func (e *Envelope) SetNotification(notification EnvelopeNotification) {
 	e.Notification = &notification
+}
+
+func (e *Envelope) GetAttachments() *EnvelopeAttachments {
+	if e == nil {
+		return nil
+	}
+	return e.Attachments
+}
+
+func (e *Envelope) SetAttachments(attachments EnvelopeAttachments) {
+	e.Attachments = &attachments
 }
 
 func (e Envelope) String() string {
