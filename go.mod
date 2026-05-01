@@ -1,4 +1,4 @@
 module github.com/alohihq/signplus-go
 
 
-go 1.18
+go 1.22
