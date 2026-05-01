@@ -2,7 +2,7 @@
 
 **Properties**
 
-| Name   | Type                  | Required | Description               |
-| :----- | :-------------------- | :------- | :------------------------ |
-| Event  | signplus.WebhookEvent | ✅       | Event of the webhook      |
-| Target | string                | ✅       | URL of the webhook target |
+| Name   | Type   | Required | Description |
+| :----- | :----- | :------- | :---------- |
+| Event  | string | ❌       |             |
+| Target | string | ❌       |             |

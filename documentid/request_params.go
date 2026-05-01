@@ -1,0 +1,10 @@
+package documentid
+
+import (
+	"github.com/alohihq/signplus-go/param"
+)
+
+// GetEnvelopeDocumentRequestParams holds the optional parameters for the API request.
+type GetEnvelopeDocumentRequestParams struct {
+	Accept *param.Nullable[string] `explode:"false" serializationStyle:"simple" headerParam:"Accept" required:"true"`
+}

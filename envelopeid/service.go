@@ -1,0 +1,137 @@
+package envelopeid
+
+import (
+	"context"
+	restClient "github.com/alohihq/signplus-go/internal/clients/rest"
+	"github.com/alohihq/signplus-go/internal/clients/rest/hooks"
+	"github.com/alohihq/signplus-go/internal/clients/rest/httptransport"
+	"github.com/alohihq/signplus-go/internal/configmanager"
+	"github.com/alohihq/signplus-go/sharedmodels"
+	"github.com/alohihq/signplus-go/signplusconfig"
+	"time"
+)
+
+// Service provides methods to interact with EnvelopeID-related API endpoints.
+// It uses a configuration manager for settings and supports custom hooks for request/response interception.
+type Service struct {
+	manager              *configmanager.ConfigManager
+	hook                 hooks.Hook
+	getEnvelopeConfig    []signplusconfig.RequestOption
+	deleteEnvelopeConfig []signplusconfig.RequestOption
+}
+
+func NewService() *Service {
+	return &Service{
+		manager: configmanager.NewConfigManager(signplusconfig.Config{}),
+	}
+}
+
+// WithConfigManager sets the configuration manager for this service.
+// Returns the service instance for method chaining.
+func (api *Service) WithConfigManager(manager *configmanager.ConfigManager) *Service {
+	api.manager = manager
+	return api
+}
+
+// WithHook sets a custom hook for request/response interception.
+// Returns the service instance for method chaining.
+func (api *Service) WithHook(hook hooks.Hook) *Service {
+	api.hook = hook
+	return api
+}
+
+func (api *Service) config() *signplusconfig.Config {
+	return api.manager.GetEnvelopeID()
+}
+
+func (api *Service) getHook() hooks.Hook {
+	return api.hook
+}
+
+func (api *Service) SetBaseURL(baseURL string) {
+	config := api.config()
+	config.SetBaseURL(baseURL)
+}
+
+func (api *Service) SetTimeout(timeout time.Duration) {
+	config := api.config()
+	config.SetTimeout(timeout)
+}
+
+func (api *Service) SetAccessToken(accessToken string) {
+	config := api.config()
+	config.SetAccessToken(accessToken)
+}
+
+// SetGetEnvelopeConfig sets method-level configuration for GetEnvelope.
+// Options are applied to every future call to GetEnvelope and take
+// precedence over service-level config. Per-call options still take highest precedence.
+func (api *Service) SetGetEnvelopeConfig(opts ...signplusconfig.RequestOption) *Service {
+	api.getEnvelopeConfig = opts
+	return api
+}
+
+// SetDeleteEnvelopeConfig sets method-level configuration for DeleteEnvelope.
+// Options are applied to every future call to DeleteEnvelope and take
+// precedence over service-level config. Per-call options still take highest precedence.
+func (api *Service) SetDeleteEnvelopeConfig(opts ...signplusconfig.RequestOption) *Service {
+	api.deleteEnvelopeConfig = opts
+	return api
+}
+
+// Get envelope
+func (api *Service) GetEnvelope(ctx context.Context, envelopeID string, params GetEnvelopeRequestParams, opts ...signplusconfig.RequestOption) ([]byte, error) {
+	config := *api.config()
+	for _, opt := range api.getEnvelopeConfig {
+		opt(&config)
+	}
+	for _, opt := range opts {
+		opt(&config)
+	}
+
+	httpRequest := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("GET").
+		WithPath("/envelope/{envelope_id}").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeID).
+		WithOptions(params).
+		WithContentType(httptransport.ContentTypeJSON).
+		WithResponseContentType(httptransport.ContentTypeJSON).
+		Build()
+
+	httpClient := restClient.NewRestClient[[]byte, []byte](config, api.getHook())
+	resp, err := httpClient.Call(*httpRequest)
+	if err != nil {
+		return nil, sharedmodels.NewSignplusError[[]byte](err)
+	}
+
+	return resp.Data, nil
+}
+
+// Delete envelope
+func (api *Service) DeleteEnvelope(ctx context.Context, envelopeID string, opts ...signplusconfig.RequestOption) ([]byte, error) {
+	config := *api.config()
+	for _, opt := range api.deleteEnvelopeConfig {
+		opt(&config)
+	}
+	for _, opt := range opts {
+		opt(&config)
+	}
+
+	httpRequest := httptransport.NewRequestBuilder().WithContext(ctx).
+		WithMethod("DELETE").
+		WithPath("/envelope/{envelope_id}").
+		WithConfig(config).
+		AddPathParam("envelope_id", envelopeID).
+		WithContentType(httptransport.ContentTypeJSON).
+		WithResponseContentType(httptransport.ContentTypeJSON).
+		Build()
+
+	httpClient := restClient.NewRestClient[[]byte, []byte](config, api.getHook())
+	resp, err := httpClient.Call(*httpRequest)
+	if err != nil {
+		return nil, sharedmodels.NewSignplusError[[]byte](err)
+	}
+
+	return resp.Data, nil
+}
