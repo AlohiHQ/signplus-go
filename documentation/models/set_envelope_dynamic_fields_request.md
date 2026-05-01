@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name          | Type                    | Required | Description            |
-| :------------ | :---------------------- | :------- | :--------------------- |
-| DynamicFields | []signplus.DynamicField | ✅       | List of dynamic fields |
+| Name          | Type                                               | Required | Description |
+| :------------ | :------------------------------------------------- | :------- | :---------- |
+| DynamicFields | [][dynamicfields.DynamicFields](dynamic_fields.md) | ❌       |             |

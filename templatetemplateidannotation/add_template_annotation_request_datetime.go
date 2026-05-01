@@ -1,0 +1,29 @@
+package templatetemplateidannotation
+
+import (
+	"encoding/json"
+	"github.com/alohihq/signplus-go/internal/unmarshal"
+	"github.com/alohihq/signplus-go/param"
+)
+
+type AddTemplateAnnotationRequestDatetime struct {
+	Size      *param.Nullable[string]        `json:"size,omitempty" xml:"size,omitempty"`
+	Font      *param.Nullable[DatetimeFont2] `json:"font,omitempty" xml:"font,omitempty"`
+	Color     *param.Nullable[string]        `json:"color,omitempty" xml:"color,omitempty"`
+	AutoFill  *param.Nullable[string]        `json:"auto_fill,omitempty" xml:"auto_fill,omitempty"`
+	Timezone  *param.Nullable[string]        `json:"timezone,omitempty" xml:"timezone,omitempty"`
+	Timestamp *param.Nullable[string]        `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Format    *param.Nullable[string]        `json:"format,omitempty" xml:"format,omitempty"`
+}
+
+func (a AddTemplateAnnotationRequestDatetime) String() string {
+	jsonData, err := json.MarshalIndent(a, "", "  ")
+	if err != nil {
+		return "error converting struct: AddTemplateAnnotationRequestDatetime to string"
+	}
+	return string(jsonData)
+}
+
+func (a *AddTemplateAnnotationRequestDatetime) UnmarshalJSON(data []byte) error {
+	return unmarshal.UnmarshalNullable(data, a)
+}
