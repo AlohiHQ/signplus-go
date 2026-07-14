@@ -6,4 +6,4 @@ Initials annotation (null if annotation is not initials)
 
 | Name | Type   | Required | Description                                  |
 | :--- | :----- | :------- | :------------------------------------------- |
-| Id   | string | ❌       | Unique identifier of the annotation initials |
+| ID   | string | ❌       | Unique identifier of the annotation initials |

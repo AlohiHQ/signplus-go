@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name       | Type                 | Required | Description        |
-| :--------- | :------------------- | :------- | :----------------- |
-| Recipients | []signplus.Recipient | ❌       | List of recipients |
+| Name       | Type                                  | Required | Description        |
+| :--------- | :------------------------------------ | :------- | :----------------- |
+| Recipients | [][signplus1.Recipient](recipient.md) | ❌       | List of recipients |

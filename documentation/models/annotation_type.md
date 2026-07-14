@@ -6,8 +6,8 @@ Type of the annotation
 
 | Name      | Type   | Required | Description |
 | :-------- | :----- | :------- | :---------- |
-| TEXT      | string | ✅       | "TEXT"      |
-| SIGNATURE | string | ✅       | "SIGNATURE" |
-| INITIALS  | string | ✅       | "INITIALS"  |
-| CHECKBOX  | string | ✅       | "CHECKBOX"  |
-| DATE      | string | ✅       | "DATE"      |
+| Text      | string | ✅       | "TEXT"      |
+| Signature | string | ✅       | "SIGNATURE" |
+| Initials  | string | ✅       | "INITIALS"  |
+| Checkbox  | string | ✅       | "CHECKBOX"  |
+| Date      | string | ✅       | "DATE"      |

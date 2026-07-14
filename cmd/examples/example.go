@@ -2,33 +2,32 @@ package main
 
 import (
 	"bufio"
-	"context"
 	"fmt"
 	"os"
 	"strings"
 
-	"github.com/alohihq/signplus-go/pkg/signplus"
-	"github.com/alohihq/signplus-go/pkg/signplusconfig"
-	"github.com/alohihq/signplus-go/pkg/util"
+	"context"
+	"github.com/alohihq/signplus-go"
+	"github.com/alohihq/signplus-go/signplus1"
 )
 
 func main() {
 	loadEnv()
 
-	config := signplusconfig.NewConfig()
+	config := signplus.NewConfig()
 	client := signplus.NewSignplus(config)
 
-	envelopeLegalityLevel := signplus.ENVELOPE_LEGALITY_LEVEL_SES
+	envelopeLegalityLevel := signplus1.EnvelopeLegalityLevelSes
 
-	request := signplus.CreateEnvelopeRequest{
-		Name:          util.ToPointer("name"),
-		LegalityLevel: &envelopeLegalityLevel,
-		ExpiresAt:     util.ToPointer(int64(8)),
-		Comment:       util.ToPointer("comment"),
-		Sandbox:       util.ToPointer(true),
+	request := signplus1.CreateEnvelopeRequest{
+		Name:          "name",
+		LegalityLevel: envelopeLegalityLevel,
+		ExpiresAt:     signplus.Ptr(int64(6)),
+		Comment:       signplus.Ptr("comment"),
+		Sandbox:       signplus.Ptr(true),
 	}
 
-	response, err := client.Signplus.CreateEnvelope(context.Background(), request)
+	response, err := client.Signplus1.CreateEnvelope(context.Background(), request)
 	if err != nil {
 		panic(err)
 	}

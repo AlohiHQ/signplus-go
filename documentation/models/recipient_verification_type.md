@@ -4,8 +4,8 @@ Type of verification the recipient must complete before accessing the envelope. 
 
 **Properties**
 
-| Name            | Type   | Required | Description       |
-| :-------------- | :----- | :------- | :---------------- |
-| SMS             | string | ✅       | "SMS"             |
-| PASSCODE        | string | ✅       | "PASSCODE"        |
-| ID_VERIFICATION | string | ✅       | "ID_VERIFICATION" |
+| Name           | Type   | Required | Description       |
+| :------------- | :----- | :------- | :---------------- |
+| Sms            | string | ✅       | "SMS"             |
+| Passcode       | string | ✅       | "PASSCODE"        |
+| IDVerification | string | ✅       | "ID_VERIFICATION" |

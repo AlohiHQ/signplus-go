@@ -4,10 +4,10 @@ Field to order envelopes by
 
 **Properties**
 
-| Name                 | Type   | Required | Description            |
-| :------------------- | :----- | :------- | :--------------------- |
-| CREATION_DATE        | string | ✅       | "CREATION_DATE"        |
-| MODIFICATION_DATE    | string | ✅       | "MODIFICATION_DATE"    |
-| NAME                 | string | ✅       | "NAME"                 |
-| STATUS               | string | ✅       | "STATUS"               |
-| LAST_DOCUMENT_CHANGE | string | ✅       | "LAST_DOCUMENT_CHANGE" |
+| Name               | Type   | Required | Description            |
+| :----------------- | :----- | :------- | :--------------------- |
+| CreationDate       | string | ✅       | "CREATION_DATE"        |
+| ModificationDate   | string | ✅       | "MODIFICATION_DATE"    |
+| Name               | string | ✅       | "NAME"                 |
+| Status             | string | ✅       | "STATUS"               |
+| LastDocumentChange | string | ✅       | "LAST_DOCUMENT_CHANGE" |
