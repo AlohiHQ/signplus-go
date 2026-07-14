@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name        | Type                  | Required | Description |
-| :---------- | :-------------------- | :------- | :---------- |
-| Annotations | []signplus.Annotation | ❌       |             |
+| Name        | Type                                    | Required | Description |
+| :---------- | :-------------------------------------- | :------- | :---------- |
+| Annotations | [][signplus1.Annotation](annotation.md) | ❌       |             |

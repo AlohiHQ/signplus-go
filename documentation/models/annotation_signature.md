@@ -6,4 +6,4 @@ Signature annotation (null if annotation is not a signature)
 
 | Name | Type   | Required | Description                                   |
 | :--- | :----- | :------- | :-------------------------------------------- |
-| Id   | string | ❌       | Unique identifier of the annotation signature |
+| ID   | string | ❌       | Unique identifier of the annotation signature |

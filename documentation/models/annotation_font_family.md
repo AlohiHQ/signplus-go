@@ -6,7 +6,7 @@ Font family of the text
 
 | Name    | Type   | Required | Description |
 | :------ | :----- | :------- | :---------- |
-| UNKNOWN | string | ✅       | "UNKNOWN"   |
-| SERIF   | string | ✅       | "SERIF"     |
-| SANS    | string | ✅       | "SANS"      |
-| MONO    | string | ✅       | "MONO"      |
+| Unknown | string | ✅       | "UNKNOWN"   |
+| Serif   | string | ✅       | "SERIF"     |
+| Sans    | string | ✅       | "SANS"      |
+| Mono    | string | ✅       | "MONO"      |

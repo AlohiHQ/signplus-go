@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name     | Type               | Required | Description |
-| :------- | :----------------- | :------- | :---------- |
-| Webhooks | []signplus.Webhook | ❌       |             |
+| Name     | Type                              | Required | Description |
+| :------- | :-------------------------------- | :------- | :---------- |
+| Webhooks | [][signplus1.Webhook](webhook.md) | ❌       |             |
